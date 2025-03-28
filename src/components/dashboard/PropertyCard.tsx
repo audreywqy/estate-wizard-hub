@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Building, MapPin, Users, DollarSign } from 'lucide-react';
 import { PropertyType } from '@/types';
@@ -25,7 +24,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
           />
           <div className="absolute top-2 right-2">
             <Badge 
-              variant={occupancyRate < 50 ? "destructive" : occupancyRate < 80 ? "secondary" : "success"}
+              variant={occupancyRate < 50 ? "destructive" : occupancyRate < 80 ? "secondary" : "default"}
               className={occupancyRate >= 80 ? "bg-green-500 hover:bg-green-600" : ""}
             >
               {occupancyRate}% Occupied
