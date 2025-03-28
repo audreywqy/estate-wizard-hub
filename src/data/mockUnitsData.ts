@@ -1,4 +1,3 @@
-
 export const unitsMockData = [
   {
     id: 1,
@@ -291,4 +290,5 @@ export const maintenanceScheduleMockData = [
   }
 ];
 
-export const { properties } = require('./mockData');
+import { properties } from './mockData';
+export { properties };
