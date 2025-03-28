@@ -21,14 +21,13 @@ import {
   CardTitle 
 } from '@/components/ui/card';
 import { 
-  Alert, 
-  AlertCircle, 
+  AlertTriangle,
   Calendar, 
   Clock, 
   Home, 
   Plus, 
   Search, 
-  Tools 
+  Wrench
 } from 'lucide-react';
 
 const MaintenancePage = () => {
@@ -49,11 +48,11 @@ const MaintenancePage = () => {
   const getPriorityIcon = (priority: string) => {
     switch (priority) {
       case 'High':
-        return <Alert className="h-4 w-4 text-red-500" />;
+        return <AlertTriangle className="h-4 w-4 text-red-500" />;
       case 'Medium':
-        return <AlertCircle className="h-4 w-4 text-amber-500" />;
+        return <AlertTriangle className="h-4 w-4 text-amber-500" />;
       case 'Low':
-        return <AlertCircle className="h-4 w-4 text-green-500" />;
+        return <AlertTriangle className="h-4 w-4 text-green-500" />;
       default:
         return null;
     }
@@ -152,7 +151,7 @@ const MaintenancePage = () => {
                 </CardContent>
                 <CardFooter className="pt-2 flex justify-between">
                   <Button variant="outline" size="sm">
-                    <Tools className="h-4 w-4 mr-2" />
+                    <Wrench className="h-4 w-4 mr-2" />
                     Assign
                   </Button>
                   <Button size="sm">View Details</Button>
