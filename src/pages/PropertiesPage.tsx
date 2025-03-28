@@ -17,12 +17,12 @@ import { Plus, Search } from 'lucide-react';
 
 const PropertiesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [propertyType, setPropertyType] = useState('');
+  const [propertyType, setPropertyType] = useState('all');
 
   const filteredProperties = properties.filter(property => {
     const matchesSearch = property.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
                        property.address.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesType = propertyType === '' || property.type === propertyType;
+    const matchesType = propertyType === 'all' || property.type === propertyType;
     
     return matchesSearch && matchesType;
   });
@@ -54,7 +54,7 @@ const PropertiesPage = () => {
               <SelectValue placeholder="Property Type" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Types</SelectItem>
+              <SelectItem value="all">All Types</SelectItem>
               <SelectItem value="Office">Office</SelectItem>
               <SelectItem value="Retail">Retail</SelectItem>
               <SelectItem value="Industrial">Industrial</SelectItem>

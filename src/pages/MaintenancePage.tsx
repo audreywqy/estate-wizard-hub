@@ -32,15 +32,15 @@ import {
 
 const MaintenancePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
-  const [priorityFilter, setPriorityFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [priorityFilter, setPriorityFilter] = useState('all');
 
   const filteredRequests = maintenanceRequests.filter(request => {
     const matchesSearch = 
       request.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
       request.property.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = statusFilter === '' || request.status === statusFilter;
-    const matchesPriority = priorityFilter === '' || request.priority === priorityFilter;
+    const matchesStatus = statusFilter === 'all' || request.status === statusFilter;
+    const matchesPriority = priorityFilter === 'all' || request.priority === priorityFilter;
     
     return matchesSearch && matchesStatus && matchesPriority;
   });
@@ -98,7 +98,7 @@ const MaintenancePage = () => {
               <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Statuses</SelectItem>
+              <SelectItem value="all">All Statuses</SelectItem>
               <SelectItem value="Pending">Pending</SelectItem>
               <SelectItem value="In Progress">In Progress</SelectItem>
               <SelectItem value="Completed">Completed</SelectItem>
@@ -109,7 +109,7 @@ const MaintenancePage = () => {
               <SelectValue placeholder="Priority" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Priorities</SelectItem>
+              <SelectItem value="all">All Priorities</SelectItem>
               <SelectItem value="High">High</SelectItem>
               <SelectItem value="Medium">Medium</SelectItem>
               <SelectItem value="Low">Low</SelectItem>

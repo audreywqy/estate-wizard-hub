@@ -41,14 +41,14 @@ import {
 
 const DocumentsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('all');
 
   const filteredDocuments = documents.filter(doc => {
     const matchesSearch = 
       doc.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
       (doc.property && doc.property.toLowerCase().includes(searchTerm.toLowerCase())) ||
       (doc.tenant && doc.tenant.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesCategory = categoryFilter === '' || doc.category === categoryFilter;
+    const matchesCategory = categoryFilter === 'all' || doc.category === categoryFilter;
     
     return matchesSearch && matchesCategory;
   });
@@ -153,7 +153,7 @@ const DocumentsPage = () => {
               <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Categories</SelectItem>
+              <SelectItem value="all">All Categories</SelectItem>
               <SelectItem value="Lease">Lease</SelectItem>
               <SelectItem value="Insurance">Insurance</SelectItem>
               <SelectItem value="Contract">Contract</SelectItem>
