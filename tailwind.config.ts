@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors for the property management app
+				navy: "#0F3460",
+				darkblue: "#16213E",
+				lightgray: "#F5F7FA",
+				teal: "#1A97B9",
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
