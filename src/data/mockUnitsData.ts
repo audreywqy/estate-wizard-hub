@@ -290,5 +290,91 @@ export const maintenanceScheduleMockData = [
   }
 ];
 
+export const documentsMockData = [
+  {
+    id: 1,
+    propertyId: 1,
+    name: "Lease Agreement - Acme Corp",
+    type: "PDF",
+    category: "Lease",
+    tenant: "Acme Corporation",
+    dateUploaded: "01/01/2023",
+    size: "1.2 MB"
+  },
+  {
+    id: 2,
+    propertyId: 1,
+    name: "Insurance Policy 2023",
+    type: "PDF",
+    category: "Insurance",
+    tenant: null,
+    dateUploaded: "02/15/2023",
+    size: "3.5 MB"
+  },
+  {
+    id: 3,
+    propertyId: 1,
+    name: "Property Tax Statement",
+    type: "PDF",
+    category: "Tax",
+    tenant: null,
+    dateUploaded: "03/10/2023",
+    size: "750 KB"
+  },
+  {
+    id: 4,
+    propertyId: 2,
+    name: "Lease Agreement - Global Retail",
+    type: "PDF",
+    category: "Lease",
+    tenant: "Global Retail Inc.",
+    dateUploaded: "03/15/2022",
+    size: "1.5 MB"
+  },
+  {
+    id: 5,
+    propertyId: 2,
+    name: "Renovation Permit",
+    type: "PDF",
+    category: "Permits",
+    tenant: null,
+    dateUploaded: "05/20/2023",
+    size: "2.1 MB"
+  }
+];
+
+export const expensesByCategoryMockData = [
+  {
+    propertyId: 1,
+    categories: [
+      { name: "Maintenance", amount: 4500 },
+      { name: "Utilities", amount: 3200 },
+      { name: "Insurance", amount: 1800 },
+      { name: "Property Tax", amount: 5500 },
+      { name: "Management", amount: 2000 }
+    ]
+  },
+  {
+    propertyId: 2,
+    categories: [
+      { name: "Maintenance", amount: 3800 },
+      { name: "Utilities", amount: 4100 },
+      { name: "Insurance", amount: 2200 },
+      { name: "Property Tax", amount: 6300 },
+      { name: "Management", amount: 2500 }
+    ]
+  },
+  {
+    propertyId: 3,
+    categories: [
+      { name: "Maintenance", amount: 5200 },
+      { name: "Utilities", amount: 2900 },
+      { name: "Insurance", amount: 3100 },
+      { name: "Property Tax", amount: 7500 },
+      { name: "Management", amount: 3000 }
+    ]
+  }
+];
+
 import { properties } from './mockData';
 export { properties };
