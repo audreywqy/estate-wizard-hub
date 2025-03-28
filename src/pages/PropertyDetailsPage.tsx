@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { properties } from '@/data/mockData';
@@ -14,6 +14,7 @@ import PropertySchedule from '@/components/property/PropertySchedule';
 import PropertyDocuments from '@/components/property/PropertyDocuments';
 import PropertyExpenses from '@/components/property/PropertyExpenses';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
 
 const PropertyDetailsPage = () => {
   const { id } = useParams();
@@ -38,6 +39,9 @@ const PropertyDetailsPage = () => {
     );
   }
 
+  // Calculate occupancy rate
+  const occupancyRate = Math.round((property.occupied / property.units) * 100);
+
   return (
     <Layout>
       <div className="space-y-6">
@@ -51,7 +55,7 @@ const PropertyDetailsPage = () => {
           <h1 className="text-2xl font-bold tracking-tight">{property.name}</h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <Card>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium">Property Value</CardTitle>
@@ -76,7 +80,32 @@ const PropertyDetailsPage = () => {
               <CardDescription>Occupied units</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{property.occupied} / {property.units}</div>
+              <div>
+                <div className="text-2xl font-bold mb-1">{property.occupied} / {property.units}</div>
+                <div className="flex justify-between text-xs mb-1">
+                  <span>Occupancy Rate</span>
+                  <span className={occupancyRate >= 80 ? "text-green-600" : occupancyRate >= 50 ? "text-amber-600" : "text-red-600"}>
+                    {occupancyRate}%
+                  </span>
+                </div>
+                <Progress 
+                  value={occupancyRate} 
+                  className={`h-2 ${
+                    occupancyRate >= 80 ? "bg-green-100" : 
+                    occupancyRate >= 50 ? "bg-amber-100" : 
+                    "bg-red-100"
+                  }`}
+                />
+              </div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium">Monthly Revenue</CardTitle>
+              <CardDescription>From all units</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">$12,500</div>
             </CardContent>
           </Card>
         </div>

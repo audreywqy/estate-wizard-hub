@@ -346,32 +346,35 @@ export const documentsMockData = [
 export const expensesByCategoryMockData = [
   {
     propertyId: 1,
+    annualBudget: 25000,
     categories: [
-      { name: "Maintenance", amount: 4500 },
-      { name: "Utilities", amount: 3200 },
-      { name: "Insurance", amount: 1800 },
-      { name: "Property Tax", amount: 5500 },
-      { name: "Management", amount: 2000 }
+      { name: "Maintenance", amount: 4500, budgetAmount: 5000 },
+      { name: "Utilities", amount: 3200, budgetAmount: 3000 },
+      { name: "Insurance", amount: 1800, budgetAmount: 2000 },
+      { name: "Property Tax", amount: 5500, budgetAmount: 5000 },
+      { name: "Management", amount: 2000, budgetAmount: 2500 }
     ]
   },
   {
     propertyId: 2,
+    annualBudget: 30000,
     categories: [
-      { name: "Maintenance", amount: 3800 },
-      { name: "Utilities", amount: 4100 },
-      { name: "Insurance", amount: 2200 },
-      { name: "Property Tax", amount: 6300 },
-      { name: "Management", amount: 2500 }
+      { name: "Maintenance", amount: 3800, budgetAmount: 4000 },
+      { name: "Utilities", amount: 4100, budgetAmount: 4000 },
+      { name: "Insurance", amount: 2200, budgetAmount: 2500 },
+      { name: "Property Tax", amount: 6300, budgetAmount: 6000 },
+      { name: "Management", amount: 2500, budgetAmount: 3000 }
     ]
   },
   {
     propertyId: 3,
+    annualBudget: 35000,
     categories: [
-      { name: "Maintenance", amount: 5200 },
-      { name: "Utilities", amount: 2900 },
-      { name: "Insurance", amount: 3100 },
-      { name: "Property Tax", amount: 7500 },
-      { name: "Management", amount: 3000 }
+      { name: "Maintenance", amount: 5200, budgetAmount: 6000 },
+      { name: "Utilities", amount: 2900, budgetAmount: 3000 },
+      { name: "Insurance", amount: 3100, budgetAmount: 3000 },
+      { name: "Property Tax", amount: 7500, budgetAmount: 7000 },
+      { name: "Management", amount: 3000, budgetAmount: 3500 }
     ]
   }
 ];

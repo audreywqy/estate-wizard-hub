@@ -4,12 +4,16 @@ import { Building, MapPin, Users, DollarSign } from 'lucide-react';
 import { PropertyType } from '@/types';
 import { Badge } from '../ui/badge';
 import { Link } from 'react-router-dom';
+import { Progress } from '@/components/ui/progress';
 
 interface PropertyCardProps {
   property: PropertyType;
 }
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
+  // Calculate occupancy rate as a percentage
+  const occupancyRate = Math.round((property.occupied / property.units) * 100);
+  
   return (
     <Link to={`/properties/${property.id}`} className="block">
       <div className="property-card group transition-all hover:shadow-md">
@@ -20,8 +24,11 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
             className="w-full h-full object-cover"
           />
           <div className="absolute top-2 right-2">
-            <Badge variant={property.vacant ? "destructive" : "secondary"}>
-              {property.vacant ? "Vacant" : "Occupied"}
+            <Badge 
+              variant={occupancyRate < 50 ? "destructive" : occupancyRate < 80 ? "secondary" : "success"}
+              className={occupancyRate >= 80 ? "bg-green-500 hover:bg-green-600" : ""}
+            >
+              {occupancyRate}% Occupied
             </Badge>
           </div>
         </div>
@@ -31,6 +38,15 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
             <MapPin className="h-4 w-4 mr-1" />
             <span>{property.address}</span>
           </div>
+          
+          <div className="mt-2 mb-2">
+            <div className="flex justify-between text-xs mb-1">
+              <span>Occupancy</span>
+              <span>{property.occupied}/{property.units} units</span>
+            </div>
+            <Progress value={occupancyRate} className="h-2" />
+          </div>
+          
           <div className="grid grid-cols-2 gap-2 mt-3">
             <div className="flex items-center">
               <Building className="h-4 w-4 mr-1 text-navy" />
