@@ -461,7 +461,11 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
                         <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip formatter={(value) => `$${Number(value).toLocaleString()}`} />
-                        <Bar dataKey="value" name="Amount" fill={(_, index) => coloredProfitLossData[index].color} />
+                        <Bar dataKey="value" name="Amount">
+                          {coloredProfitLossData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Bar>
                       </BarChart>
                     </ResponsiveContainer>
                   </CardContent>
