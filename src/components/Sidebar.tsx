@@ -8,7 +8,8 @@ import {
   FileText, 
   LayoutDashboard, 
   Settings, 
-  X
+  X,
+  Briefcase
 } from 'lucide-react';
 import { Button } from './ui/button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -28,6 +29,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     { name: 'Tenants', path: '/tenants', icon: <Users className="w-5 h-5" /> },
     { name: 'Maintenance', path: '/maintenance', icon: <ClipboardList className="w-5 h-5" /> },
     { name: 'Documents', path: '/documents', icon: <FileText className="w-5 h-5" /> },
+    { name: 'Vendors', path: '/vendors', icon: <Briefcase className="w-5 h-5" /> },
     { name: 'Settings', path: '/settings', icon: <Settings className="w-5 h-5" /> },
   ];
 

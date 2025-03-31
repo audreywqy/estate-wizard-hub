@@ -1,4 +1,3 @@
-
 import { PropertyType, TenantType, MaintenanceRequestType, DocumentType } from '@/types';
 
 export const properties: PropertyType[] = [
@@ -228,5 +227,88 @@ export const documents: DocumentType[] = [
     tenant: "Global Retail Inc.",
     dateUploaded: "03/01/2022",
     size: "1.5 MB"
+  }
+];
+
+export const vendors = [
+  {
+    id: 1,
+    name: "Premium Plumbing Services",
+    serviceType: "Plumbing",
+    phone: "(555) 123-4567",
+    email: "contact@premiumplumbing.com",
+    address: "123 Main St, Anytown, USA",
+    propertyIds: [1, 3, 5],
+    lastService: "2023-05-15"
+  },
+  {
+    id: 2,
+    name: "Elite Electrical Contractors",
+    serviceType: "Electrical",
+    phone: "(555) 234-5678",
+    email: "info@eliteelectrical.com",
+    address: "456 Oak Lane, Somewhere, USA",
+    propertyIds: [1, 2, 4],
+    lastService: "2023-06-22"
+  },
+  {
+    id: 3,
+    name: "Top-Tier HVAC",
+    serviceType: "HVAC",
+    phone: "(555) 345-6789",
+    email: "service@toptierhvac.com",
+    address: "789 Pine Ave, Elsewhere, USA",
+    propertyIds: [2, 3, 5],
+    lastService: "2023-07-10"
+  },
+  {
+    id: 4,
+    name: "Reliable Roofing Co",
+    serviceType: "Roofing",
+    phone: "(555) 456-7890",
+    email: "repairs@reliableroofing.com",
+    address: "101 Cedar Rd, Nowhere, USA",
+    propertyIds: [1, 4],
+    lastService: "2023-04-05"
+  },
+  {
+    id: 5,
+    name: "SafeGuard Security Systems",
+    serviceType: "Security",
+    phone: "(555) 567-8901",
+    email: "info@safeguardsecurity.com",
+    address: "202 Maple Dr, Anywhere, USA",
+    propertyIds: [1, 2, 3],
+    lastService: "2023-08-18"
+  },
+  {
+    id: 6,
+    name: "Clean & Clear Window Washing",
+    serviceType: "Windows",
+    phone: "(555) 678-9012",
+    email: "schedule@cleanandclear.com",
+    address: "303 Elm Blvd, Someplace, USA",
+    propertyIds: [3, 5],
+    lastService: "2023-09-02"
+  },
+  {
+    id: 7,
+    name: "GreenScape Landscaping",
+    serviceType: "Landscaping",
+    phone: "(555) 789-0123",
+    email: "service@greenscapelandscaping.com",
+    address: "404 Birch St, Othertown, USA",
+    propertyIds: [1, 2, 4, 5],
+    lastService: "2023-10-12"
+  },
+  {
+    id: 8,
+    name: "FastFix Maintenance",
+    serviceType: "General Maintenance",
+    phone: "(555) 890-1234",
+    email: "repairs@fastfixmaintenance.com",
+    address: "505 Willow Ln, Somewhere, USA",
+    propertyIds: [1, 3],
+    lastService: "2023-11-20"
   }
 ];

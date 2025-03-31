@@ -5,7 +5,7 @@ import Layout from '@/components/Layout';
 import { properties } from '@/data/mockData';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
-import { Building, Users, Wrench, Receipt, Calendar, ArrowLeft, FileText, DollarSign } from 'lucide-react';
+import { Building, Users, Wrench, Receipt, Calendar, ArrowLeft, FileText, DollarSign, Briefcase } from 'lucide-react';
 import PropertyUnits from '@/components/property/PropertyUnits';
 import PropertyTenants from '@/components/property/PropertyTenants';
 import PropertyMaintenance from '@/components/property/PropertyMaintenance';
@@ -13,6 +13,7 @@ import PropertyLedger from '@/components/property/PropertyLedger';
 import PropertySchedule from '@/components/property/PropertySchedule';
 import PropertyDocuments from '@/components/property/PropertyDocuments';
 import PropertyExpenses from '@/components/property/PropertyExpenses';
+import PropertyVendors from '@/components/property/PropertyVendors';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 
@@ -111,7 +112,7 @@ const PropertyDetailsPage = () => {
         </div>
         
         <Tabs defaultValue="units" className="w-full">
-          <TabsList className="grid grid-cols-2 md:grid-cols-7 lg:grid-cols-7 w-full">
+          <TabsList className="grid grid-cols-2 md:grid-cols-8 lg:grid-cols-8 w-full">
             <TabsTrigger value="units" className="flex items-center gap-2">
               <Building className="h-4 w-4" /> Units
             </TabsTrigger>
@@ -132,6 +133,9 @@ const PropertyDetailsPage = () => {
             </TabsTrigger>
             <TabsTrigger value="expenses" className="flex items-center gap-2">
               <DollarSign className="h-4 w-4" /> Expenses
+            </TabsTrigger>
+            <TabsTrigger value="vendors" className="flex items-center gap-2">
+              <Briefcase className="h-4 w-4" /> Vendors
             </TabsTrigger>
           </TabsList>
           <TabsContent value="units" className="py-4">
@@ -154,6 +158,9 @@ const PropertyDetailsPage = () => {
           </TabsContent>
           <TabsContent value="expenses" className="py-4">
             <PropertyExpenses propertyId={propertyId} />
+          </TabsContent>
+          <TabsContent value="vendors" className="py-4">
+            <PropertyVendors propertyId={propertyId} />
           </TabsContent>
         </Tabs>
       </div>
