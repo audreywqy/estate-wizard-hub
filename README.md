@@ -6,6 +6,8 @@
 
 Prop Master is a comprehensive real estate management tool built with Lovable. Designed as a one-stop solution for property managers, it streamlines operations, enhances efficiency, automates workflows, and provides powerful insights into real estate performance and returns. It also improves communication and enhances the tenant experience. With its intuitive interface and robust visualization features, Prop Master helps property managers identify areas that need attention and optimize overall operations.
 
+![Screenshot of PropMaster](https://github.com/user-attachments/assets/018f8946-5b6c-495d-926b-064e8873fe79)
+
 ## Features
 
 ### Property Management Dashboard 
