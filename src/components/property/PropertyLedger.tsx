@@ -1,7 +1,7 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowUp, ArrowDown, Plus, Filter } from 'lucide-react';
+import { ArrowUp, ArrowDown, Plus, Filter, Calendar } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ledgersMockData } from '@/data/mockUnitsData';
 
 interface PropertyLedgerProps {
@@ -19,7 +20,17 @@ interface PropertyLedgerProps {
 }
 
 const PropertyLedger: React.FC<PropertyLedgerProps> = ({ propertyId }) => {
-  const transactions = ledgersMockData.filter(transaction => transaction.propertyId === propertyId);
+  const [selectedMonth, setSelectedMonth] = useState<string>('All');
+  
+  // Filter transactions based on selected month
+  let transactions = ledgersMockData.filter(transaction => transaction.propertyId === propertyId);
+  
+  if (selectedMonth !== 'All') {
+    // Simple month filtering (in a real app, this would be more sophisticated)
+    transactions = transactions.filter(transaction => 
+      transaction.date.includes(selectedMonth.substring(0, 3))
+    );
+  }
   
   // Calculate totals
   const totalIncome = transactions
@@ -46,6 +57,29 @@ const PropertyLedger: React.FC<PropertyLedgerProps> = ({ propertyId }) => {
             New Transaction
           </Button>
         </div>
+      </div>
+
+      <div className="flex justify-end mb-2">
+        <Select value={selectedMonth} onValueChange={setSelectedMonth}>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Filter by Month" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="All">All Months</SelectItem>
+            <SelectItem value="January">January</SelectItem>
+            <SelectItem value="February">February</SelectItem>
+            <SelectItem value="March">March</SelectItem>
+            <SelectItem value="April">April</SelectItem>
+            <SelectItem value="May">May</SelectItem>
+            <SelectItem value="June">June</SelectItem>
+            <SelectItem value="July">July</SelectItem>
+            <SelectItem value="August">August</SelectItem>
+            <SelectItem value="September">September</SelectItem>
+            <SelectItem value="October">October</SelectItem>
+            <SelectItem value="November">November</SelectItem>
+            <SelectItem value="December">December</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

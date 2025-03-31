@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Plus, Download, AlertTriangle, ArrowUpDown } from 'lucide-react';
+import { Plus, Download, AlertTriangle, ArrowUpDown, Calendar, Filter } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { expensesByCategoryMockData } from '@/data/mockUnitsData';
 import { 
@@ -24,6 +24,16 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ChartContainer, ChartTooltipContent } from '@/components/ui/chart';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { AddExpenseForm } from '@/components/property/AddExpenseForm';
 
 interface PropertyExpensesProps {
   propertyId: number;
@@ -36,7 +46,9 @@ const months = [
 
 const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
   const [selectedMonth, setSelectedMonth] = useState<string>('All');
+  const [selectedTimeRange, setSelectedTimeRange] = useState<string>('all');
   const [showBudgetOverview, setShowBudgetOverview] = useState<boolean>(true);
+  const [showExpenseDialog, setShowExpenseDialog] = useState<boolean>(false);
   
   const expenseData = expensesByCategoryMockData.find(exp => exp.propertyId === propertyId);
   const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
@@ -91,6 +103,25 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
     budget: category.budgetAmount || (selectedMonth === 'All' ? category.amount * 1.2 : category.amount * 1.2 / 12),
   }));
 
+  // Profit and Loss data calculation
+  const calculateProfitLoss = (month = 'All') => {
+    const expenses = month === 'All' 
+      ? totalExpenses 
+      : monthlyData[months.indexOf(month)]?.categories.reduce((sum, cat) => sum + cat.amount, 0) || 0;
+    
+    // Mock revenue data - in a real app, this would come from the revenue data
+    const revenue = month === 'All' ? 150000 : 12500;
+    const profit = revenue - expenses;
+    
+    return { revenue, expenses, profit };
+  };
+
+  const profitLossData = calculateProfitLoss(selectedMonth);
+
+  const handleAddExpense = () => {
+    setShowExpenseDialog(true);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -100,10 +131,23 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
             <Download className="h-4 w-4 mr-2" />
             Export
           </Button>
-          <Button size="sm">
-            <Plus className="h-4 w-4 mr-2" />
-            Add Expense
-          </Button>
+          <Dialog open={showExpenseDialog} onOpenChange={setShowExpenseDialog}>
+            <DialogTrigger asChild>
+              <Button size="sm" onClick={handleAddExpense}>
+                <Plus className="h-4 w-4 mr-2" />
+                Add Expense
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[550px]">
+              <DialogHeader>
+                <DialogTitle>Add New Expense</DialogTitle>
+                <DialogDescription>
+                  Enter the details for the new expense.
+                </DialogDescription>
+              </DialogHeader>
+              <AddExpenseForm propertyId={propertyId} onClose={() => setShowExpenseDialog(false)} />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
       
@@ -201,7 +245,28 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
             </CardContent>
           </Card>
 
-          <div className="flex justify-end mb-2">
+          <div className="flex justify-between mb-2">
+            <div className="flex items-center space-x-2">
+              <Select value={selectedTimeRange} onValueChange={setSelectedTimeRange}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Time Range" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Time</SelectItem>
+                  <SelectItem value="ytd">Year to Date</SelectItem>
+                  <SelectItem value="q1">Q1</SelectItem>
+                  <SelectItem value="q2">Q2</SelectItem>
+                  <SelectItem value="q3">Q3</SelectItem>
+                  <SelectItem value="q4">Q4</SelectItem>
+                </SelectContent>
+              </Select>
+              
+              <Button variant="outline" size="sm">
+                <Calendar className="h-4 w-4 mr-2" />
+                Custom Range
+              </Button>
+            </div>
+          
             <Select value={selectedMonth} onValueChange={setSelectedMonth}>
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select Month" />
@@ -220,6 +285,7 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="monthly-trend">Monthly Trend</TabsTrigger>
               <TabsTrigger value="budget-comparison">Budget Comparison</TabsTrigger>
+              <TabsTrigger value="profit-loss">Profit & Loss</TabsTrigger>
             </TabsList>
             
             <TabsContent value="overview" className="space-y-6">
@@ -286,11 +352,11 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
             </TabsContent>
             
             <TabsContent value="monthly-trend">
-              <Card>
+              <Card className="w-full">
                 <CardHeader>
                   <CardTitle className="text-lg">Monthly Expense Trend</CardTitle>
                 </CardHeader>
-                <CardContent className="h-80">
+                <CardContent className="w-full h-96">
                   <ChartContainer 
                     config={{
                       primary: { theme: { dark: '#0088FE', light: '#0088FE' }, label: "Maintenance" },
@@ -299,6 +365,7 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
                       quaternary: { theme: { dark: '#FF8042', light: '#FF8042' }, label: "Property Tax" },
                       quinary: { theme: { dark: '#8884d8', light: '#8884d8' }, label: "Management" },
                     }}
+                    className="w-full h-full"
                   >
                     <LineChart data={categoryByMonthData}>
                       <CartesianGrid strokeDasharray="3 3" />
@@ -322,13 +389,13 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
             </TabsContent>
             
             <TabsContent value="budget-comparison">
-              <Card className="col-span-full">
+              <Card className="col-span-full w-full">
                 <CardHeader>
                   <CardTitle className="text-lg">
                     {selectedMonth === 'All' ? 'Annual' : selectedMonth} Budget vs. Actual Expenses
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="h-80">
+                <CardContent className="h-96 w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                       data={budgetComparisonData}
@@ -345,6 +412,69 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
                   </ResponsiveContainer>
                 </CardContent>
               </Card>
+            </TabsContent>
+            
+            <TabsContent value="profit-loss">
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <Card>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-medium text-green-600">Revenue</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-2xl font-bold">${profitLossData.revenue.toLocaleString()}</div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-medium text-red-600">Expenses</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-2xl font-bold">${profitLossData.expenses.toLocaleString()}</div>
+                    </CardContent>
+                  </Card>
+                  <Card>
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-sm font-medium">Net Profit/Loss</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className={`text-2xl font-bold ${profitLossData.profit >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        ${profitLossData.profit.toLocaleString()}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+                
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">
+                      {selectedMonth === 'All' ? 'Annual' : selectedMonth} Profit & Loss Statement
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="h-96 w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart
+                        data={[
+                          { name: 'Revenue', value: profitLossData.revenue },
+                          { name: 'Expenses', value: profitLossData.expenses },
+                          { name: 'Profit', value: profitLossData.profit },
+                        ]}
+                        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip formatter={(value) => `$${Number(value).toLocaleString()}`} />
+                        <Bar dataKey="value" name="Amount" fill={(entry) => 
+                          entry.name === 'Revenue' ? '#4caf50' : 
+                          entry.name === 'Expenses' ? '#f44336' : 
+                          entry.value >= 0 ? '#2196f3' : '#f44336'
+                        } />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </CardContent>
+                </Card>
+              </div>
             </TabsContent>
           </Tabs>
         </>
