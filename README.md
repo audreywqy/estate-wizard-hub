@@ -1,69 +1,73 @@
-# Welcome to your Lovable project
+# Prop Master
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/a668e48e-e641-4d8e-b630-79a089642c9d
+## Overview
 
-## How can I edit this code?
+Prop Master is a comprehensive real estate management tool built with Lovable. Designed as a one-stop solution for property managers, it streamlines operations, enhances efficiency, automates workflows, and provides powerful insights into real estate performance and returns. It also improves communication and enhances the tenant experience. With its intuitive interface and robust visualization features, Prop Master helps property managers identify areas that need attention and optimize overall operations.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+### Property Management Dashboard 
+Centralized control over real estate assets and operations.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a668e48e-e641-4d8e-b630-79a089642c9d) and start prompting.
+### Work Order Logging & Follow-ups
+Track maintenance requests and ensure timely completion.
 
-Changes made via Lovable will be committed automatically to this repo.
+### Preventive Maintenance Scheduling
+Plan and manage routine upkeep to avoid costly repairs.
 
-**Use your preferred IDE**
+### Tenant Notifications
+Automated updates to keep tenants informed.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Performance Analytics
+Visualize real estate performance and return on investment.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Operational Insights
+Identify inefficiencies and improve property management strategies.
 
-Follow these steps:
+## Tech Stack
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Prop Master is built with modern web technologies to ensure a fast, scalable, and user-friendly experience:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Vite
 
-# Step 3: Install the necessary dependencies.
-npm i
+TypeScript 
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+React
 
-**Edit a file directly in GitHub**
+shadcn-ui
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Tailwind CSS
 
-**Use GitHub Codespaces**
+## Getting Started
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Installation
 
-## What technologies are used for this project?
+1. Clone the repository:
 
-This project is built with .
+`git clone https://github.com/audreywqy/estate-wizard-hub.git`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+2. Navigate to the project folder:
 
-## How can I deploy this project?
+`cd prop-master`
 
-Simply open [Lovable](https://lovable.dev/projects/a668e48e-e641-4d8e-b630-79a089642c9d) and click on Share -> Publish.
+3. Install dependencies:
 
-## I want to use a custom domain - is that possible?
+`npm install`
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+4. Start the development server:
+
+`npm run dev`
+
+### Deployment
+
+To build for production, run:
+
+`npm run build`
+
+If you would like to try the demo, please visit **URL**: https://lovable.dev/projects/a668e48e-e641-4d8e-b630-79a089642c9d
+
+For inquiries or feedback, please comment here or reach out to Audrey Wang @ https://www.linkedin.com/in/audreyw77/
+
+
