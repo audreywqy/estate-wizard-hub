@@ -1,3 +1,4 @@
+
 import { PropertyType, TenantType, MaintenanceRequestType, DocumentType } from '@/types';
 
 export const properties: PropertyType[] = [
@@ -79,7 +80,11 @@ export const tenants: TenantType[] = [
     unit: "Suite 1200",
     leaseStart: "01/01/2023",
     leaseEnd: "12/31/2025",
-    rent: 5800
+    rent: 5800,
+    leaseType: "NNN",
+    realEstateTax: 950,
+    commonAreaMaintenance: 750,
+    insurance: 350
   },
   {
     id: 2,
@@ -90,7 +95,8 @@ export const tenants: TenantType[] = [
     unit: "Unit 105",
     leaseStart: "03/15/2022",
     leaseEnd: "03/14/2027",
-    rent: 4200
+    rent: 4200,
+    leaseType: "Gross"
   },
   {
     id: 3,
@@ -101,7 +107,11 @@ export const tenants: TenantType[] = [
     unit: "Warehouse 3",
     leaseStart: "07/01/2022",
     leaseEnd: "06/30/2027",
-    rent: 7500
+    rent: 7500,
+    leaseType: "NNN",
+    realEstateTax: 1200,
+    commonAreaMaintenance: 950,
+    insurance: 500
   },
   {
     id: 4,
@@ -112,7 +122,8 @@ export const tenants: TenantType[] = [
     unit: "Unit 101",
     leaseStart: "09/01/2022",
     leaseEnd: "08/31/2024",
-    rent: 3200
+    rent: 3200,
+    leaseType: "Gross"
   },
   {
     id: 5,
@@ -123,7 +134,11 @@ export const tenants: TenantType[] = [
     unit: "Suite 500",
     leaseStart: "05/15/2023",
     leaseEnd: "05/14/2026",
-    rent: 6100
+    rent: 6100,
+    leaseType: "NNN",
+    realEstateTax: 1050,
+    commonAreaMaintenance: 825,
+    insurance: 475
   }
 ];
 

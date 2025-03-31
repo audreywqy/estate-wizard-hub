@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import PropertiesPage from "./pages/PropertiesPage";
 import PropertyDetailsPage from "./pages/PropertyDetailsPage";
 import TenantsPage from "./pages/TenantsPage";
+import TenantDetailsPage from "./pages/TenantDetailsPage";
 import MaintenancePage from "./pages/MaintenancePage";
 import DocumentsPage from "./pages/DocumentsPage";
 import SettingsPage from "./pages/SettingsPage";
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/properties" element={<PropertiesPage />} />
           <Route path="/properties/:id" element={<PropertyDetailsPage />} />
           <Route path="/tenants" element={<TenantsPage />} />
+          <Route path="/tenants/:id" element={<TenantDetailsPage />} />
           <Route path="/maintenance" element={<MaintenancePage />} />
           <Route path="/documents" element={<DocumentsPage />} />
           <Route path="/vendors" element={<VendorsPage />} />

@@ -21,6 +21,10 @@ export interface TenantType {
   leaseStart: string;
   leaseEnd: string;
   rent: number;
+  leaseType: 'Gross' | 'NNN'; // Add lease type
+  realEstateTax?: number; // For NNN lease
+  commonAreaMaintenance?: number; // For NNN lease
+  insurance?: number; // For NNN lease
 }
 
 export interface MaintenanceRequestType {

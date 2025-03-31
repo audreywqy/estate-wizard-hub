@@ -1,7 +1,9 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Plus, Mail, Phone, MoreHorizontal } from 'lucide-react';
+import { Plus, Mail, Phone, MoreHorizontal, ExternalLink } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import {
   Table,
   TableBody,
@@ -43,6 +45,7 @@ const PropertyTenants: React.FC<PropertyTenantsProps> = ({ propertyId }) => {
                 <TableHead>Business Name</TableHead>
                 <TableHead>Unit</TableHead>
                 <TableHead>Lease Term</TableHead>
+                <TableHead>Lease Type</TableHead>
                 <TableHead>Primary Contact</TableHead>
                 <TableHead>Monthly Rent</TableHead>
                 <TableHead>Contact</TableHead>
@@ -52,10 +55,23 @@ const PropertyTenants: React.FC<PropertyTenantsProps> = ({ propertyId }) => {
             <TableBody>
               {tenants.map((tenant) => (
                 <TableRow key={tenant.id}>
-                  <TableCell className="font-medium">{tenant.businessName}</TableCell>
+                  <TableCell className="font-medium">
+                    <Link 
+                      to={`/tenants/${tenant.id}`} 
+                      className="flex items-center hover:underline"
+                    >
+                      {tenant.businessName}
+                      <ExternalLink className="ml-1 h-3 w-3 text-muted-foreground" />
+                    </Link>
+                  </TableCell>
                   <TableCell>{tenant.unitNumber}</TableCell>
                   <TableCell>
                     {tenant.leaseStart} to {tenant.leaseEnd}
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant={tenant.leaseType === "Gross" ? "outline" : "secondary"}>
+                      {tenant.leaseType}
+                    </Badge>
                   </TableCell>
                   <TableCell>{tenant.primaryContact}</TableCell>
                   <TableCell>${tenant.monthlyRent.toLocaleString()}</TableCell>
@@ -77,7 +93,9 @@ const PropertyTenants: React.FC<PropertyTenantsProps> = ({ propertyId }) => {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem>View Details</DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link to={`/tenants/${tenant.id}`}>View Details</Link>
+                        </DropdownMenuItem>
                         <DropdownMenuItem>Edit Tenant</DropdownMenuItem>
                         <DropdownMenuItem>View Contacts</DropdownMenuItem>
                         <DropdownMenuItem>View Ledger</DropdownMenuItem>

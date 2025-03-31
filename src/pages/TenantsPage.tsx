@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { tenants } from '@/data/mockData';
 import { 
@@ -13,7 +14,8 @@ import {
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Plus, Search, Mail, Phone, MoreHorizontal } from 'lucide-react';
+import { Plus, Search, Mail, Phone, MoreHorizontal, ExternalLink } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -60,6 +62,7 @@ const TenantsPage = () => {
                 <TableHead>Property</TableHead>
                 <TableHead>Unit</TableHead>
                 <TableHead>Lease Term</TableHead>
+                <TableHead>Lease Type</TableHead>
                 <TableHead>Monthly Rent</TableHead>
                 <TableHead>Contact</TableHead>
                 <TableHead className="w-[80px]"></TableHead>
@@ -69,11 +72,21 @@ const TenantsPage = () => {
               {filteredTenants.length > 0 ? (
                 filteredTenants.map((tenant) => (
                   <TableRow key={tenant.id}>
-                    <TableCell className="font-medium">{tenant.name}</TableCell>
+                    <TableCell className="font-medium">
+                      <Link to={`/tenants/${tenant.id}`} className="flex items-center hover:underline">
+                        {tenant.name}
+                        <ExternalLink className="ml-1 h-3 w-3 text-muted-foreground" />
+                      </Link>
+                    </TableCell>
                     <TableCell>{tenant.property}</TableCell>
                     <TableCell>{tenant.unit}</TableCell>
                     <TableCell>
                       {tenant.leaseStart} to {tenant.leaseEnd}
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant={tenant.leaseType === "Gross" ? "outline" : "secondary"}>
+                        {tenant.leaseType}
+                      </Badge>
                     </TableCell>
                     <TableCell>${tenant.rent.toLocaleString()}</TableCell>
                     <TableCell>
@@ -94,7 +107,9 @@ const TenantsPage = () => {
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem>View Details</DropdownMenuItem>
+                          <DropdownMenuItem asChild>
+                            <Link to={`/tenants/${tenant.id}`}>View Details</Link>
+                          </DropdownMenuItem>
                           <DropdownMenuItem>Edit Tenant</DropdownMenuItem>
                           <DropdownMenuItem>Contact</DropdownMenuItem>
                         </DropdownMenuContent>
@@ -104,7 +119,7 @@ const TenantsPage = () => {
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center h-24">
+                  <TableCell colSpan={8} className="text-center h-24">
                     No tenants found matching your search.
                   </TableCell>
                 </TableRow>
