@@ -293,11 +293,11 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
                 <CardContent className="h-80">
                   <ChartContainer 
                     config={{
-                      primary: { theme: { dark: '#0088FE', light: '#0088FE' } },
-                      secondary: { theme: { dark: '#00C49F', light: '#00C49F' } },
-                      tertiary: { theme: { dark: '#FFBB28', light: '#FFBB28' } },
-                      quaternary: { theme: { dark: '#FF8042', light: '#FF8042' } },
-                      quinary: { theme: { dark: '#8884d8', light: '#8884d8' } },
+                      primary: { theme: { dark: '#0088FE', light: '#0088FE' }, label: "Maintenance" },
+                      secondary: { theme: { dark: '#00C49F', light: '#00C49F' }, label: "Utilities" },
+                      tertiary: { theme: { dark: '#FFBB28', light: '#FFBB28' }, label: "Insurance" },
+                      quaternary: { theme: { dark: '#FF8042', light: '#FF8042' }, label: "Property Tax" },
+                      quinary: { theme: { dark: '#8884d8', light: '#8884d8' }, label: "Management" },
                     }}
                   >
                     <LineChart data={categoryByMonthData}>

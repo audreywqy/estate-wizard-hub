@@ -1,3 +1,4 @@
+
 export const unitsMockData = [
   {
     id: 1,
@@ -353,6 +354,128 @@ export const expensesByCategoryMockData = [
       { name: "Insurance", amount: 1800, budgetAmount: 2000 },
       { name: "Property Tax", amount: 5500, budgetAmount: 5000 },
       { name: "Management", amount: 2000, budgetAmount: 2500 }
+    ],
+    monthlyData: [
+      {
+        month: "January",
+        categories: [
+          { name: "Maintenance", amount: 320 },
+          { name: "Utilities", amount: 280 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 166 }
+        ]
+      },
+      {
+        month: "February",
+        categories: [
+          { name: "Maintenance", amount: 350 },
+          { name: "Utilities", amount: 265 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 166 }
+        ]
+      },
+      {
+        month: "March",
+        categories: [
+          { name: "Maintenance", amount: 410 },
+          { name: "Utilities", amount: 255 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 166 }
+        ]
+      },
+      {
+        month: "April",
+        categories: [
+          { name: "Maintenance", amount: 380 },
+          { name: "Utilities", amount: 240 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 166 }
+        ]
+      },
+      {
+        month: "May",
+        categories: [
+          { name: "Maintenance", amount: 420 },
+          { name: "Utilities", amount: 270 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 166 }
+        ]
+      },
+      {
+        month: "June",
+        categories: [
+          { name: "Maintenance", amount: 450 },
+          { name: "Utilities", amount: 310 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 166 }
+        ]
+      },
+      {
+        month: "July",
+        categories: [
+          { name: "Maintenance", amount: 470 },
+          { name: "Utilities", amount: 320 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 166 }
+        ]
+      },
+      {
+        month: "August",
+        categories: [
+          { name: "Maintenance", amount: 390 },
+          { name: "Utilities", amount: 290 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 168 }
+        ]
+      },
+      {
+        month: "September",
+        categories: [
+          { name: "Maintenance", amount: 410 },
+          { name: "Utilities", amount: 270 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 168 }
+        ]
+      },
+      {
+        month: "October",
+        categories: [
+          { name: "Maintenance", amount: 430 },
+          { name: "Utilities", amount: 260 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 168 }
+        ]
+      },
+      {
+        month: "November",
+        categories: [
+          { name: "Maintenance", amount: 240 },
+          { name: "Utilities", amount: 230 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 458 },
+          { name: "Management", amount: 170 }
+        ]
+      },
+      {
+        month: "December",
+        categories: [
+          { name: "Maintenance", amount: 230 },
+          { name: "Utilities", amount: 210 },
+          { name: "Insurance", amount: 150 },
+          { name: "Property Tax", amount: 462 },
+          { name: "Management", amount: 164 }
+        ]
+      }
     ]
   },
   {
@@ -364,6 +487,128 @@ export const expensesByCategoryMockData = [
       { name: "Insurance", amount: 2200, budgetAmount: 2500 },
       { name: "Property Tax", amount: 6300, budgetAmount: 6000 },
       { name: "Management", amount: 2500, budgetAmount: 3000 }
+    ],
+    monthlyData: [
+      {
+        month: "January",
+        categories: [
+          { name: "Maintenance", amount: 310 },
+          { name: "Utilities", amount: 350 },
+          { name: "Insurance", amount: 183 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 208 }
+        ]
+      },
+      {
+        month: "February",
+        categories: [
+          { name: "Maintenance", amount: 290 },
+          { name: "Utilities", amount: 340 },
+          { name: "Insurance", amount: 183 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 208 }
+        ]
+      },
+      {
+        month: "March",
+        categories: [
+          { name: "Maintenance", amount: 320 },
+          { name: "Utilities", amount: 330 },
+          { name: "Insurance", amount: 183 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 208 }
+        ]
+      },
+      {
+        month: "April",
+        categories: [
+          { name: "Maintenance", amount: 340 },
+          { name: "Utilities", amount: 320 },
+          { name: "Insurance", amount: 183 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 208 }
+        ]
+      },
+      {
+        month: "May",
+        categories: [
+          { name: "Maintenance", amount: 350 },
+          { name: "Utilities", amount: 335 },
+          { name: "Insurance", amount: 183 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 208 }
+        ]
+      },
+      {
+        month: "June",
+        categories: [
+          { name: "Maintenance", amount: 330 },
+          { name: "Utilities", amount: 355 },
+          { name: "Insurance", amount: 183 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 208 }
+        ]
+      },
+      {
+        month: "July",
+        categories: [
+          { name: "Maintenance", amount: 320 },
+          { name: "Utilities", amount: 370 },
+          { name: "Insurance", amount: 184 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 208 }
+        ]
+      },
+      {
+        month: "August",
+        categories: [
+          { name: "Maintenance", amount: 330 },
+          { name: "Utilities", amount: 380 },
+          { name: "Insurance", amount: 184 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 210 }
+        ]
+      },
+      {
+        month: "September",
+        categories: [
+          { name: "Maintenance", amount: 300 },
+          { name: "Utilities", amount: 340 },
+          { name: "Insurance", amount: 184 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 210 }
+        ]
+      },
+      {
+        month: "October",
+        categories: [
+          { name: "Maintenance", amount: 290 },
+          { name: "Utilities", amount: 330 },
+          { name: "Insurance", amount: 184 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 210 }
+        ]
+      },
+      {
+        month: "November",
+        categories: [
+          { name: "Maintenance", amount: 310 },
+          { name: "Utilities", amount: 320 },
+          { name: "Insurance", amount: 184 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 210 }
+        ]
+      },
+      {
+        month: "December",
+        categories: [
+          { name: "Maintenance", amount: 310 },
+          { name: "Utilities", amount: 330 },
+          { name: "Insurance", amount: 182 },
+          { name: "Property Tax", amount: 525 },
+          { name: "Management", amount: 212 }
+        ]
+      }
     ]
   },
   {
@@ -375,6 +620,128 @@ export const expensesByCategoryMockData = [
       { name: "Insurance", amount: 3100, budgetAmount: 3000 },
       { name: "Property Tax", amount: 7500, budgetAmount: 7000 },
       { name: "Management", amount: 3000, budgetAmount: 3500 }
+    ],
+    monthlyData: [
+      {
+        month: "January",
+        categories: [
+          { name: "Maintenance", amount: 450 },
+          { name: "Utilities", amount: 240 },
+          { name: "Insurance", amount: 258 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "February",
+        categories: [
+          { name: "Maintenance", amount: 430 },
+          { name: "Utilities", amount: 230 },
+          { name: "Insurance", amount: 258 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "March",
+        categories: [
+          { name: "Maintenance", amount: 440 },
+          { name: "Utilities", amount: 235 },
+          { name: "Insurance", amount: 258 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "April",
+        categories: [
+          { name: "Maintenance", amount: 460 },
+          { name: "Utilities", amount: 240 },
+          { name: "Insurance", amount: 258 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "May",
+        categories: [
+          { name: "Maintenance", amount: 470 },
+          { name: "Utilities", amount: 250 },
+          { name: "Insurance", amount: 258 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "June",
+        categories: [
+          { name: "Maintenance", amount: 480 },
+          { name: "Utilities", amount: 260 },
+          { name: "Insurance", amount: 258 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "July",
+        categories: [
+          { name: "Maintenance", amount: 490 },
+          { name: "Utilities", amount: 270 },
+          { name: "Insurance", amount: 258 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "August",
+        categories: [
+          { name: "Maintenance", amount: 410 },
+          { name: "Utilities", amount: 250 },
+          { name: "Insurance", amount: 258 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "September",
+        categories: [
+          { name: "Maintenance", amount: 420 },
+          { name: "Utilities", amount: 240 },
+          { name: "Insurance", amount: 258 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "October",
+        categories: [
+          { name: "Maintenance", amount: 400 },
+          { name: "Utilities", amount: 230 },
+          { name: "Insurance", amount: 262 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "November",
+        categories: [
+          { name: "Maintenance", amount: 380 },
+          { name: "Utilities", amount: 225 },
+          { name: "Insurance", amount: 262 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      },
+      {
+        month: "December",
+        categories: [
+          { name: "Maintenance", amount: 370 },
+          { name: "Utilities", amount: 230 },
+          { name: "Insurance", amount: 264 },
+          { name: "Property Tax", amount: 625 },
+          { name: "Management", amount: 250 }
+        ]
+      }
     ]
   }
 ];
