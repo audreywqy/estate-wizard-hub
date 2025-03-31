@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Plus, Download, AlertTriangle, ArrowUpDown, Calendar, Filter } from 'lucide-react';
@@ -60,10 +59,8 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
   const annualBudget = expenseData?.annualBudget || 25000;
   const budgetUsedPercentage = Math.min(Math.round((totalExpenses / annualBudget) * 100), 100);
   
-  // Monthly data for each category
   const monthlyData = expenseData?.monthlyData || [];
   
-  // Create category totals by month
   const categoryByMonthData = months.map((month, index) => {
     const monthData = monthlyData[index] || { categories: [] };
     const result = { month, total: 0 };
@@ -77,7 +74,6 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
     return result;
   });
   
-  // Data for selected month or all months
   const filteredCategoryData = selectedMonth === 'All' 
     ? expenseData?.categories || []
     : (() => {
@@ -90,7 +86,7 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
           return {
             ...category,
             amount: monthlyCategoryData?.amount || 0,
-            budgetAmount: (category.budgetAmount || category.amount * 1.2) / 12 // Monthly budget
+            budgetAmount: (category.budgetAmount || category.amount * 1.2) / 12
           };
         }) || [];
       })();
@@ -103,13 +99,11 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
     budget: category.budgetAmount || (selectedMonth === 'All' ? category.amount * 1.2 : category.amount * 1.2 / 12),
   }));
 
-  // Profit and Loss data calculation
   const calculateProfitLoss = (month = 'All') => {
     const expenses = month === 'All' 
       ? totalExpenses 
       : monthlyData[months.indexOf(month)]?.categories.reduce((sum, cat) => sum + cat.amount, 0) || 0;
     
-    // Mock revenue data - in a real app, this would come from the revenue data
     const revenue = month === 'All' ? 150000 : 12500;
     const profit = revenue - expenses;
     
@@ -117,6 +111,12 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
   };
 
   const profitLossData = calculateProfitLoss(selectedMonth);
+
+  const coloredProfitLossData = [
+    { name: 'Revenue', value: profitLossData.revenue, color: '#4caf50' },
+    { name: 'Expenses', value: profitLossData.expenses, color: '#f44336' },
+    { name: 'Profit', value: profitLossData.profit, color: profitLossData.profit >= 0 ? '#2196f3' : '#f44336' },
+  ];
 
   const handleAddExpense = () => {
     setShowExpenseDialog(true);
@@ -454,22 +454,14 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
                   <CardContent className="h-96 w-full">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart
-                        data={[
-                          { name: 'Revenue', value: profitLossData.revenue },
-                          { name: 'Expenses', value: profitLossData.expenses },
-                          { name: 'Profit', value: profitLossData.profit },
-                        ]}
+                        data={coloredProfitLossData}
                         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
                       >
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="name" />
                         <YAxis />
                         <Tooltip formatter={(value) => `$${Number(value).toLocaleString()}`} />
-                        <Bar dataKey="value" name="Amount" fill={(entry) => 
-                          entry.name === 'Revenue' ? '#4caf50' : 
-                          entry.name === 'Expenses' ? '#f44336' : 
-                          entry.value >= 0 ? '#2196f3' : '#f44336'
-                        } />
+                        <Bar dataKey="value" name="Amount" fill={(_, index) => coloredProfitLossData[index].color} />
                       </BarChart>
                     </ResponsiveContainer>
                   </CardContent>
