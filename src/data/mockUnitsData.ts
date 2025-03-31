@@ -1,4 +1,3 @@
-
 export const unitsMockData = [
   {
     id: 1,
@@ -93,7 +92,8 @@ export const tenantsMockData = [
     monthlyRent: 2400,
     primaryContact: "John Smith",
     email: "john@acmecorp.com",
-    phone: "(555) 123-4567"
+    phone: "(555) 123-4567",
+    leaseType: "Gross"
   },
   {
     id: 2,
@@ -105,7 +105,11 @@ export const tenantsMockData = [
     monthlyRent: 3000,
     primaryContact: "Sarah Johnson",
     email: "sarah@techinnovations.com",
-    phone: "(555) 987-6543"
+    phone: "(555) 987-6543",
+    leaseType: "NNN",
+    realEstateTax: 350,
+    commonAreaMaintenance: 250,
+    insurance: 120
   },
   {
     id: 3,
@@ -117,7 +121,8 @@ export const tenantsMockData = [
     monthlyRent: 3500,
     primaryContact: "Michael Brown",
     email: "leasing@globalretail.com",
-    phone: "(555) 234-5678"
+    phone: "(555) 234-5678",
+    leaseType: "Gross"
   },
   {
     id: 4,
@@ -129,7 +134,11 @@ export const tenantsMockData = [
     monthlyRent: 3200,
     primaryContact: "Emma Wilson",
     email: "emma@fashionboutique.com",
-    phone: "(555) 876-5432"
+    phone: "(555) 876-5432",
+    leaseType: "NNN",
+    realEstateTax: 420,
+    commonAreaMaintenance: 280,
+    insurance: 150
   },
   {
     id: 5,
@@ -141,7 +150,8 @@ export const tenantsMockData = [
     monthlyRent: 6000,
     primaryContact: "David Miller",
     email: "operations@logisticssolutions.com",
-    phone: "(555) 345-6789"
+    phone: "(555) 345-6789",
+    leaseType: "Gross"
   }
 ];
 
@@ -743,6 +753,182 @@ export const expensesByCategoryMockData = [
         ]
       }
     ]
+  }
+];
+
+export const expensesMockData = [
+  {
+    id: 1,
+    propertyId: 1,
+    date: "Jan 15, 2023",
+    description: "HVAC Repair",
+    category: "Maintenance",
+    vendor: "Quality HVAC Services",
+    amount: 850
+  },
+  {
+    id: 2,
+    propertyId: 1,
+    date: "Feb 10, 2023",
+    description: "Property Insurance Premium",
+    category: "Insurance",
+    vendor: "Reliable Insurance Co.",
+    amount: 1200
+  },
+  {
+    id: 3,
+    propertyId: 1,
+    date: "Mar 05, 2023",
+    description: "Landscaping Service",
+    category: "Maintenance",
+    vendor: "Green Thumb Landscaping",
+    amount: 450
+  },
+  {
+    id: 4,
+    propertyId: 2,
+    date: "Jan 10, 2023",
+    description: "Elevator Maintenance",
+    category: "Maintenance",
+    vendor: "City Elevator Co.",
+    amount: 750
+  },
+  {
+    id: 5,
+    propertyId: 2,
+    date: "Feb 28, 2023",
+    description: "Property Tax Payment",
+    category: "Property Tax",
+    vendor: "City Government",
+    amount: 3200
+  }
+];
+
+export const expenseBreakdownData = [
+  {
+    propertyId: 1,
+    category: "Maintenance",
+    amount: 4500
+  },
+  {
+    propertyId: 1,
+    category: "Utilities",
+    amount: 3200
+  },
+  {
+    propertyId: 1,
+    category: "Insurance",
+    amount: 1800
+  },
+  {
+    propertyId: 1,
+    category: "Property Tax",
+    amount: 5500
+  },
+  {
+    propertyId: 1,
+    category: "Management",
+    amount: 2000
+  },
+  {
+    propertyId: 2,
+    category: "Maintenance",
+    amount: 3800
+  },
+  {
+    propertyId: 2,
+    category: "Utilities",
+    amount: 4100
+  },
+  {
+    propertyId: 2,
+    category: "Insurance",
+    amount: 2200
+  },
+  {
+    propertyId: 2,
+    category: "Property Tax",
+    amount: 6300
+  },
+  {
+    propertyId: 2,
+    category: "Management",
+    amount: 2500
+  }
+];
+
+export const profitLossData = [
+  {
+    propertyId: 1,
+    month: "Jan",
+    income: 5400,
+    expenses: 2300
+  },
+  {
+    propertyId: 1,
+    month: "Feb",
+    income: 5400,
+    expenses: 2500
+  },
+  {
+    propertyId: 1,
+    month: "Mar",
+    income: 5400,
+    expenses: 2100
+  },
+  {
+    propertyId: 1,
+    month: "Apr",
+    income: 5400,
+    expenses: 2400
+  },
+  {
+    propertyId: 1,
+    month: "May",
+    income: 5400,
+    expenses: 2200
+  },
+  {
+    propertyId: 1,
+    month: "Jun",
+    income: 5400,
+    expenses: 2600
+  },
+  {
+    propertyId: 2,
+    month: "Jan",
+    income: 6700,
+    expenses: 3100
+  },
+  {
+    propertyId: 2,
+    month: "Feb",
+    income: 6700,
+    expenses: 3300
+  },
+  {
+    propertyId: 2,
+    month: "Mar",
+    income: 6700,
+    expenses: 2900
+  },
+  {
+    propertyId: 2,
+    month: "Apr",
+    income: 6700,
+    expenses: 3200
+  },
+  {
+    propertyId: 2,
+    month: "May",
+    income: 6700,
+    expenses: 3000
+  },
+  {
+    propertyId: 2,
+    month: "Jun",
+    income: 6700,
+    expenses: 3400
   }
 ];
 

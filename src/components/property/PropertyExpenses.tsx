@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
-import AddExpenseForm from './AddExpenseForm';
+import { AddExpenseForm } from './AddExpenseForm';
 import { expensesMockData, expenseBreakdownData, profitLossData } from '@/data/mockUnitsData';
 
 // Define chart colors
@@ -96,7 +96,7 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
       </div>
 
       {showAddExpense ? (
-        <AddExpenseForm propertyId={propertyId} onCancel={() => setShowAddExpense(false)} />
+        <AddExpenseForm propertyId={propertyId} onClose={() => setShowAddExpense(false)} />
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
