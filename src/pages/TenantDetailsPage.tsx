@@ -7,8 +7,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Building, Receipt, FileText, Calendar, Mail, Phone } from 'lucide-react';
+import { ArrowLeft, Building, Receipt, FileText, Calendar, Mail, Phone, CreditCard } from 'lucide-react';
 import TenantLedger from '@/components/tenant/TenantLedger';
+import TenantNNNInvoice from '@/components/tenant/TenantNNNInvoice';
 
 const TenantDetailsPage = () => {
   const { id } = useParams();
@@ -163,27 +164,37 @@ const TenantDetailsPage = () => {
         </div>
         
         <Tabs defaultValue="ledger" className="w-full">
-          <TabsList className="grid grid-cols-2 md:grid-cols-3 w-full max-w-md">
+          <TabsList className="grid grid-cols-2 md:grid-cols-4 w-full max-w-lg">
             <TabsTrigger value="ledger" className="flex items-center gap-2">
               <Receipt className="h-4 w-4" /> Ledger
             </TabsTrigger>
+            {tenant.leaseType === 'NNN' && (
+              <TabsTrigger value="nnn" className="flex items-center gap-2">
+                <CreditCard className="h-4 w-4" /> NNN Invoice
+              </TabsTrigger>
+            )}
             <TabsTrigger value="documents" className="flex items-center gap-2">
               <FileText className="h-4 w-4" /> Documents
             </TabsTrigger>
-            <TabsTrigger value="settings" className="flex items-center gap-2">
+            <TabsTrigger value="schedule" className="flex items-center gap-2">
               <Calendar className="h-4 w-4" /> Schedule
             </TabsTrigger>
           </TabsList>
           <TabsContent value="ledger" className="py-4">
             <TenantLedger tenantId={tenantId} />
           </TabsContent>
+          {tenant.leaseType === 'NNN' && (
+            <TabsContent value="nnn" className="py-4">
+              <TenantNNNInvoice tenantId={tenantId} />
+            </TabsContent>
+          )}
           <TabsContent value="documents" className="py-4">
             <div className="text-center py-12 text-muted-foreground">
               <p>Tenant documents will be displayed here.</p>
               <Button className="mt-4" variant="outline">Upload Document</Button>
             </div>
           </TabsContent>
-          <TabsContent value="settings" className="py-4">
+          <TabsContent value="schedule" className="py-4">
             <div className="text-center py-12 text-muted-foreground">
               <p>Tenant schedule and important dates will be displayed here.</p>
               <Button className="mt-4" variant="outline">Add Schedule Item</Button>
