@@ -675,3 +675,67 @@ export const maintenanceScheduleMockData = [
     vendor: "City Plumbers"
   }
 ];
+
+// Add loan mock data
+export const loanMockData = [
+  {
+    id: 1,
+    propertyId: 1,
+    loanAmount: 1600000,
+    downPayment: 400000,
+    interestRate: 4.25,
+    term: 30,
+    rateType: 'Fixed',
+    monthlyPayment: 7865.21,
+    originationDate: '2020-03-15',
+    maturityDate: '2050-03-15',
+    lender: 'First National Bank',
+    loanNumber: 'L-102938476',
+    principalPaid: 125000,
+    paymentDueDay: '1st',
+    contactName: 'John Smith',
+    contactTitle: 'Loan Officer',
+    contactPhone: '(555) 123-4567',
+    contactEmail: 'jsmith@firstnational.com'
+  },
+  {
+    id: 2,
+    propertyId: 2,
+    loanAmount: 2200000,
+    downPayment: 800000,
+    interestRate: 3.875,
+    term: 25,
+    rateType: 'Fixed',
+    monthlyPayment: 11450.67,
+    originationDate: '2021-05-22',
+    maturityDate: '2046-05-22',
+    lender: 'Commercial Trust',
+    loanNumber: 'C-987654321',
+    principalPaid: 98000,
+    paymentDueDay: '5th',
+    contactName: 'Sarah Johnson',
+    contactTitle: 'Senior Loan Officer',
+    contactPhone: '(555) 987-6543',
+    contactEmail: 'sjohnson@commercialtrust.com'
+  },
+  {
+    id: 3,
+    propertyId: 3,
+    loanAmount: 3500000,
+    downPayment: 1500000,
+    interestRate: 4.5,
+    term: 20,
+    rateType: 'ARM',
+    monthlyPayment: 22182.09,
+    originationDate: '2019-11-10',
+    maturityDate: '2039-11-10',
+    lender: 'Pacific Investment Bank',
+    loanNumber: 'PIB-567890123',
+    principalPaid: 350000,
+    paymentDueDay: '15th',
+    contactName: 'Michael Wong',
+    contactTitle: 'VP Commercial Lending',
+    contactPhone: '(555) 456-7890',
+    contactEmail: 'mwong@pacificinvestment.com'
+  }
+];
