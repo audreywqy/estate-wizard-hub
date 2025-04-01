@@ -10,6 +10,7 @@ import PropertyDetailsPage from "./pages/PropertyDetailsPage";
 import TenantsPage from "./pages/TenantsPage";
 import TenantDetailsPage from "./pages/TenantDetailsPage";
 import MaintenancePage from "./pages/MaintenancePage";
+import MaintenanceRequestDetailPage from "./pages/MaintenanceRequestDetailPage";
 import DocumentsPage from "./pages/DocumentsPage";
 import SettingsPage from "./pages/SettingsPage";
 import VendorsPage from "./pages/VendorsPage";
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/tenants" element={<TenantsPage />} />
           <Route path="/tenants/:id" element={<TenantDetailsPage />} />
           <Route path="/maintenance" element={<MaintenancePage />} />
+          <Route path="/maintenance/:id" element={<MaintenanceRequestDetailPage />} />
           <Route path="/documents" element={<DocumentsPage />} />
           <Route path="/vendors" element={<VendorsPage />} />
           <Route path="/settings" element={<SettingsPage />} />

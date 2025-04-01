@@ -8,6 +8,7 @@ import { Building, DollarSign, Users, Wrench } from 'lucide-react';
 import { properties, maintenanceRequests } from '@/data/mockData';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useNavigate } from 'react-router-dom';
 import { 
   BarChart, 
   Bar, 
@@ -42,6 +43,16 @@ const expenseData = [
 const EXPENSE_COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
 const Index = () => {
+  const navigate = useNavigate();
+  
+  const pendingRequests = maintenanceRequests.filter(req => req.status === 'Pending');
+  const inProgressRequests = maintenanceRequests.filter(req => req.status === 'In Progress');
+  const completedRequests = maintenanceRequests.filter(req => req.status === 'Completed');
+  
+  const navigateToMaintenanceWithFilter = (status: string) => {
+    navigate(`/maintenance?status=${status}`);
+  };
+
   return (
     <Layout>
       <div className="space-y-6">
@@ -138,7 +149,7 @@ const Index = () => {
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold">Featured Properties</h2>
-            <Button variant="link">View All</Button>
+            <Button variant="link" onClick={() => navigate('/properties')}>View All</Button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {properties.slice(0, 3).map((property) => (
@@ -164,26 +175,35 @@ const Index = () => {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col space-y-4">
-                <div className="flex justify-between items-center">
+                <div 
+                  className="flex justify-between items-center p-2 rounded hover:bg-gray-50 cursor-pointer"
+                  onClick={() => navigateToMaintenanceWithFilter('Pending')}
+                >
                   <div className="flex items-center">
                     <div className="w-3 h-3 rounded-full bg-amber-500 mr-2"></div>
                     <span>Pending</span>
                   </div>
-                  <span className="font-semibold">2</span>
+                  <span className="font-semibold">{pendingRequests.length}</span>
                 </div>
-                <div className="flex justify-between items-center">
+                <div 
+                  className="flex justify-between items-center p-2 rounded hover:bg-gray-50 cursor-pointer"
+                  onClick={() => navigateToMaintenanceWithFilter('In Progress')}
+                >
                   <div className="flex items-center">
                     <div className="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
                     <span>In Progress</span>
                   </div>
-                  <span className="font-semibold">2</span>
+                  <span className="font-semibold">{inProgressRequests.length}</span>
                 </div>
-                <div className="flex justify-between items-center">
+                <div 
+                  className="flex justify-between items-center p-2 rounded hover:bg-gray-50 cursor-pointer"
+                  onClick={() => navigateToMaintenanceWithFilter('Completed')}
+                >
                   <div className="flex items-center">
                     <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
                     <span>Completed</span>
                   </div>
-                  <span className="font-semibold">1</span>
+                  <span className="font-semibold">{completedRequests.length}</span>
                 </div>
               </div>
             </CardContent>

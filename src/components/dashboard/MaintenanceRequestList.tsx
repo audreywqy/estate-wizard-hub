@@ -3,12 +3,15 @@ import React from 'react';
 import { MaintenanceRequestType } from '@/types';
 import { Badge } from '../ui/badge';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 
 interface MaintenanceRequestListProps {
   requests: MaintenanceRequestType[];
 }
 
 const MaintenanceRequestList: React.FC<MaintenanceRequestListProps> = ({ requests }) => {
+  const navigate = useNavigate();
+  
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'Pending':
@@ -22,6 +25,10 @@ const MaintenanceRequestList: React.FC<MaintenanceRequestListProps> = ({ request
     }
   };
 
+  const handleRequestClick = (requestId: number) => {
+    navigate(`/maintenance/${requestId}`);
+  };
+
   return (
     <div className="bg-white rounded-lg shadow">
       <div className="p-4 border-b border-gray-200">
@@ -29,7 +36,11 @@ const MaintenanceRequestList: React.FC<MaintenanceRequestListProps> = ({ request
       </div>
       <div className="divide-y divide-gray-200">
         {requests.map((request) => (
-          <div key={request.id} className="p-4 hover:bg-gray-50 transition-colors duration-150">
+          <div 
+            key={request.id} 
+            className="p-4 hover:bg-gray-50 transition-colors duration-150 cursor-pointer"
+            onClick={() => handleRequestClick(request.id)}
+          >
             <div className="flex items-start justify-between">
               <div>
                 <h4 className="font-medium">{request.title}</h4>

@@ -1,9 +1,10 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { maintenanceRequests } from '@/data/mockData';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   Select,
   SelectContent,
@@ -31,9 +32,28 @@ import {
 } from 'lucide-react';
 
 const MaintenancePage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialStatus = queryParams.get('status') || 'all';
+  
   const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState('all');
+  const [statusFilter, setStatusFilter] = useState(initialStatus);
   const [priorityFilter, setPriorityFilter] = useState('all');
+
+  // Update URL when filters change
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (statusFilter !== 'all') {
+      params.set('status', statusFilter);
+    }
+    if (priorityFilter !== 'all') {
+      params.set('priority', priorityFilter);
+    }
+    
+    const newUrl = params.toString() ? `?${params.toString()}` : '';
+    navigate(`/maintenance${newUrl}`, { replace: true });
+  }, [statusFilter, priorityFilter, navigate]);
 
   const filteredRequests = maintenanceRequests.filter(request => {
     const matchesSearch = 
@@ -69,6 +89,10 @@ const MaintenancePage = () => {
       default:
         return 'bg-gray-100 text-gray-800';
     }
+  };
+
+  const handleViewDetails = (requestId: number) => {
+    navigate(`/maintenance/${requestId}`);
   };
 
   return (
@@ -121,7 +145,7 @@ const MaintenancePage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredRequests.length > 0 ? (
             filteredRequests.map((request) => (
-              <Card key={request.id}>
+              <Card key={request.id} className="cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => handleViewDetails(request.id)}>
                 <CardHeader className="pb-2">
                   <div className="flex justify-between">
                     <Badge className={getStatusColor(request.status)}>
@@ -150,7 +174,10 @@ const MaintenancePage = () => {
                   </div>
                 </CardContent>
                 <CardFooter className="pt-2 flex justify-between">
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" onClick={(e) => {
+                    e.stopPropagation();
+                    // Assign logic would go here
+                  }}>
                     <Wrench className="h-4 w-4 mr-2" />
                     Assign
                   </Button>

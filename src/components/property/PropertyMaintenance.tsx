@@ -5,12 +5,15 @@ import { maintenanceRequests, properties } from '@/data/mockData';
 import { Plus, AlertTriangle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { useNavigate } from 'react-router-dom';
 
 interface PropertyMaintenanceProps {
   propertyId: number;
 }
 
 const PropertyMaintenance: React.FC<PropertyMaintenanceProps> = ({ propertyId }) => {
+  const navigate = useNavigate();
+  
   const requests = maintenanceRequests.filter(req => 
     req.property === properties.find(p => p.id === propertyId)?.name
   );
@@ -39,6 +42,10 @@ const PropertyMaintenance: React.FC<PropertyMaintenanceProps> = ({ propertyId })
       default:
         return null;
     }
+  };
+
+  const handleViewDetails = (requestId: number) => {
+    navigate(`/maintenance/${requestId}`);
   };
 
   return (
@@ -82,7 +89,7 @@ const PropertyMaintenance: React.FC<PropertyMaintenanceProps> = ({ propertyId })
               </CardContent>
               <CardFooter className="flex justify-end space-x-2">
                 <Button variant="outline" size="sm">Assign</Button>
-                <Button size="sm">View Details</Button>
+                <Button size="sm" onClick={() => handleViewDetails(request.id)}>View Details</Button>
               </CardFooter>
             </Card>
           ))
