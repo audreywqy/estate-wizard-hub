@@ -15,7 +15,11 @@ import {
   YAxis, 
   CartesianGrid, 
   Tooltip, 
-  ResponsiveContainer 
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  Legend
 } from 'recharts';
 
 const occupancyData = [
@@ -26,6 +30,16 @@ const occupancyData = [
   { name: 'May', rate: 92 },
   { name: 'Jun', rate: 93 },
 ];
+
+const expenseData = [
+  { name: 'Maintenance', value: 35000 },
+  { name: 'Utilities', value: 22000 },
+  { name: 'Insurance', value: 18000 },
+  { name: 'Property Tax', value: 40000 },
+  { name: 'Management', value: 15000 },
+];
+
+const EXPENSE_COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
 
 const Index = () => {
   return (
@@ -70,23 +84,55 @@ const Index = () => {
           />
         </div>
 
-        {/* Occupancy Chart */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Occupancy Rate</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={occupancyData}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="name" />
-                <YAxis domain={[80, 100]} />
-                <Tooltip />
-                <Bar dataKey="rate" fill="#0F3460" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+        {/* Charts - Occupancy and Expense */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Occupancy Chart - Now half width */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Occupancy Rate</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={occupancyData}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="name" />
+                  <YAxis domain={[80, 100]} />
+                  <Tooltip />
+                  <Bar dataKey="rate" fill="#0F3460" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+          
+          {/* Expense Chart - New addition */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Expense Breakdown</CardTitle>
+            </CardHeader>
+            <CardContent className="flex justify-center">
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={expenseData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    outerRadius={100}
+                    fill="#8884d8"
+                    dataKey="value"
+                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  >
+                    {expenseData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={EXPENSE_COLORS[index % EXPENSE_COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(value) => `$${value.toLocaleString()}`} />
+                  <Legend />
+                </PieChart>
+              </ResponsiveContainer>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Properties section */}
         <div>

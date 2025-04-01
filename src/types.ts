@@ -11,6 +11,12 @@ export interface PropertyType {
   imageUrl: string;
 }
 
+export interface RentEscalationType {
+  startDate: string;
+  endDate: string;
+  monthlyRent: number;
+}
+
 export interface TenantType {
   id: number;
   name: string;
@@ -25,6 +31,7 @@ export interface TenantType {
   realEstateTax?: number; // For NNN lease
   commonAreaMaintenance?: number; // For NNN lease
   insurance?: number; // For NNN lease
+  rentEscalation?: RentEscalationType[]; // Add rent escalation
 }
 
 export interface MaintenanceRequestType {
