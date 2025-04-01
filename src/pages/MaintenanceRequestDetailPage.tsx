@@ -43,7 +43,9 @@ const MaintenanceRequestDetailPage = () => {
   
   const request = maintenanceRequests.find(req => req.id === Number(id));
   
-  const [status, setStatus] = useState(request?.status || 'Pending');
+  const [status, setStatus] = useState<'Pending' | 'In Progress' | 'Completed'>(
+    (request?.status as 'Pending' | 'In Progress' | 'Completed') || 'Pending'
+  );
   const [assignedVendor, setAssignedVendor] = useState('');
   const [cost, setCost] = useState('');
   
@@ -210,7 +212,10 @@ const MaintenanceRequestDetailPage = () => {
               <CardTitle>Status</CardTitle>
             </CardHeader>
             <CardContent>
-              <Select value={status} onValueChange={setStatus}>
+              <Select 
+                value={status} 
+                onValueChange={(value: 'Pending' | 'In Progress' | 'Completed') => setStatus(value)}
+              >
                 <SelectTrigger>
                   <SelectValue placeholder="Select status" />
                 </SelectTrigger>

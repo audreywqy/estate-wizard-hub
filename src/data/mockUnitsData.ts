@@ -1,936 +1,163 @@
-export const unitsMockData = [
-  {
-    id: 1,
-    propertyId: 1,
-    unitNumber: "Suite 101",
-    type: "Office",
-    squareFeet: 1200,
-    rentAmount: 2400,
-    status: "Occupied",
-    tenant: "Acme Corporation"
-  },
-  {
-    id: 2,
-    propertyId: 1,
-    unitNumber: "Suite 102",
-    type: "Office",
-    squareFeet: 950,
-    rentAmount: 1900,
-    status: "Vacant",
-    tenant: null
-  },
-  {
-    id: 3,
-    propertyId: 1,
-    unitNumber: "Suite 103",
-    type: "Office",
-    squareFeet: 1500,
-    rentAmount: 3000,
-    status: "Occupied",
-    tenant: "Tech Innovations Inc."
-  },
-  {
-    id: 4,
-    propertyId: 2,
-    unitNumber: "Store 100",
-    type: "Retail",
-    squareFeet: 2000,
-    rentAmount: 3500,
-    status: "Occupied",
-    tenant: "Global Retail Inc."
-  },
-  {
-    id: 5,
-    propertyId: 2,
-    unitNumber: "Store 101",
-    type: "Retail",
-    squareFeet: 1800,
-    rentAmount: 3200,
-    status: "Occupied",
-    tenant: "Fashion Boutique LLC"
-  },
-  {
-    id: 6,
-    propertyId: 3,
-    unitNumber: "Warehouse A",
-    type: "Industrial",
-    squareFeet: 5000,
-    rentAmount: 6000,
-    status: "Occupied",
-    tenant: "Logistics Solutions LLC"
-  },
-  {
-    id: 7,
-    propertyId: 4,
-    unitNumber: "Unit 101",
-    type: "Commercial",
-    squareFeet: 1000,
-    rentAmount: 2200,
-    status: "Occupied",
-    tenant: "Urban Café"
-  },
-  {
-    id: 8,
-    propertyId: 5,
-    unitNumber: "Suite 500",
-    type: "Office",
-    squareFeet: 2500,
-    rentAmount: 5000,
-    status: "Occupied",
-    tenant: "TechStart Inc."
-  }
-];
+
+// Mock data for units and tenants
 
 export const tenantsMockData = [
   {
     id: 1,
     propertyId: 1,
-    businessName: "Acme Corporation",
-    unitNumber: "Suite 101",
-    leaseStart: "01/01/2023",
-    leaseEnd: "12/31/2025",
-    monthlyRent: 2400,
+    businessName: "ABC Corp",
+    unitNumber: "101",
+    leaseStart: "2023-01-01",
+    leaseEnd: "2027-12-31",
+    monthlyRent: 5500,
     primaryContact: "John Smith",
-    email: "john@acmecorp.com",
+    email: "john@abccorp.com",
     phone: "(555) 123-4567",
-    leaseType: "Gross"
+    leaseType: "NNN",
+    realEstateTax: 850,
+    commonAreaMaintenance: 650,
+    insurance: 350,
+    rentEscalation: [
+      { startDate: "2023-01-01", endDate: "2024-12-31", monthlyRent: 5500 },
+      { startDate: "2025-01-01", endDate: "2025-12-31", monthlyRent: 5775 },
+      { startDate: "2026-01-01", endDate: "2027-12-31", monthlyRent: 6063 }
+    ]
   },
   {
     id: 2,
     propertyId: 1,
-    businessName: "Tech Innovations Inc.",
-    unitNumber: "Suite 103",
-    leaseStart: "02/15/2023",
-    leaseEnd: "02/14/2026",
-    monthlyRent: 3000,
+    businessName: "XYZ Industries",
+    unitNumber: "102",
+    leaseStart: "2022-06-01",
+    leaseEnd: "2025-05-31",
+    monthlyRent: 4800,
     primaryContact: "Sarah Johnson",
-    email: "sarah@techinnovations.com",
+    email: "sarah@xyzind.com",
     phone: "(555) 987-6543",
-    leaseType: "NNN",
-    realEstateTax: 350,
-    commonAreaMaintenance: 250,
-    insurance: 120
+    leaseType: "Gross",
+    rentEscalation: [
+      { startDate: "2022-06-01", endDate: "2023-05-31", monthlyRent: 4800 },
+      { startDate: "2023-06-01", endDate: "2024-05-31", monthlyRent: 4944 },
+      { startDate: "2024-06-01", endDate: "2025-05-31", monthlyRent: 5092 }
+    ]
   },
   {
     id: 3,
     propertyId: 2,
-    businessName: "Global Retail Inc.",
-    unitNumber: "Store 100",
-    leaseStart: "03/15/2022",
-    leaseEnd: "03/14/2027",
-    monthlyRent: 3500,
-    primaryContact: "Michael Brown",
-    email: "leasing@globalretail.com",
-    phone: "(555) 234-5678",
-    leaseType: "Gross"
+    businessName: "123 Tech",
+    unitNumber: "A",
+    leaseStart: "2023-03-15",
+    leaseEnd: "2028-03-14",
+    monthlyRent: 7200,
+    primaryContact: "Mike Wilson",
+    email: "mike@123tech.com",
+    phone: "(555) 456-7890",
+    leaseType: "NNN",
+    realEstateTax: 1100,
+    commonAreaMaintenance: 800,
+    insurance: 500,
+    rentEscalation: [
+      { startDate: "2023-03-15", endDate: "2025-03-14", monthlyRent: 7200 },
+      { startDate: "2025-03-15", endDate: "2027-03-14", monthlyRent: 7560 },
+      { startDate: "2027-03-15", endDate: "2028-03-14", monthlyRent: 7938 }
+    ]
   },
   {
     id: 4,
     propertyId: 2,
-    businessName: "Fashion Boutique LLC",
-    unitNumber: "Store 101",
-    leaseStart: "04/01/2023",
-    leaseEnd: "03/31/2025",
-    monthlyRent: 3200,
-    primaryContact: "Emma Wilson",
-    email: "emma@fashionboutique.com",
-    phone: "(555) 876-5432",
-    leaseType: "NNN",
-    realEstateTax: 420,
-    commonAreaMaintenance: 280,
-    insurance: 150
+    businessName: "Global Shipping",
+    unitNumber: "B",
+    leaseStart: "2022-11-01",
+    leaseEnd: "2027-10-31",
+    monthlyRent: 6500,
+    primaryContact: "Lisa Brown",
+    email: "lisa@globalshipping.com",
+    phone: "(555) 789-0123",
+    leaseType: "Gross",
+    rentEscalation: [
+      { startDate: "2022-11-01", endDate: "2024-10-31", monthlyRent: 6500 },
+      { startDate: "2024-11-01", endDate: "2026-10-31", monthlyRent: 6825 },
+      { startDate: "2026-11-01", endDate: "2027-10-31", monthlyRent: 7166 }
+    ]
   },
   {
     id: 5,
     propertyId: 3,
-    businessName: "Logistics Solutions LLC",
-    unitNumber: "Warehouse A",
-    leaseStart: "07/01/2022",
-    leaseEnd: "06/30/2027",
-    monthlyRent: 6000,
-    primaryContact: "David Miller",
-    email: "operations@logisticssolutions.com",
-    phone: "(555) 345-6789",
-    leaseType: "Gross"
+    businessName: "Legal Partners LLC",
+    unitNumber: "201",
+    leaseStart: "2023-02-01",
+    leaseEnd: "2028-01-31",
+    monthlyRent: 6200,
+    primaryContact: "David Martinez",
+    email: "david@legalpartners.com",
+    phone: "(555) 234-5678",
+    leaseType: "NNN",
+    realEstateTax: 950,
+    commonAreaMaintenance: 720,
+    insurance: 430,
+    rentEscalation: [
+      { startDate: "2023-02-01", endDate: "2025-01-31", monthlyRent: 6200 },
+      { startDate: "2025-02-01", endDate: "2027-01-31", monthlyRent: 6510 },
+      { startDate: "2027-02-01", endDate: "2028-01-31", monthlyRent: 6835 }
+    ]
   }
 ];
 
-export const ledgersMockData = [
+export const unitsMockData = [
   {
     id: 1,
     propertyId: 1,
-    date: "06/01/2023",
-    description: "Monthly Rent - Acme Corp",
-    unitOrTenant: "Suite 101 - Acme Corporation",
-    category: "Rent",
-    type: "Income",
-    amount: 2400
+    unitNumber: "101",
+    size: 2500,
+    occupied: true,
+    tenantId: 1
   },
   {
     id: 2,
     propertyId: 1,
-    date: "06/01/2023",
-    description: "Monthly Rent - Tech Innovations",
-    unitOrTenant: "Suite 103 - Tech Innovations Inc.",
-    category: "Rent",
-    type: "Income",
-    amount: 3000
+    unitNumber: "102",
+    size: 2200,
+    occupied: true,
+    tenantId: 2
   },
   {
     id: 3,
     propertyId: 1,
-    date: "06/05/2023",
-    description: "HVAC Repair",
-    unitOrTenant: "Building Common Area",
-    category: "Maintenance",
-    type: "Expense",
-    amount: 850
+    unitNumber: "103",
+    size: 2300,
+    occupied: false,
+    tenantId: null
   },
   {
     id: 4,
-    propertyId: 1,
-    date: "06/10/2023",
-    description: "Property Insurance",
-    unitOrTenant: "Entire Property",
-    category: "Insurance",
-    type: "Expense",
-    amount: 1200
+    propertyId: 2,
+    unitNumber: "A",
+    size: 3600,
+    occupied: true,
+    tenantId: 3
   },
   {
     id: 5,
-    propertyId: 1,
-    date: "06/15/2023",
-    description: "Late Fee - Acme Corp",
-    unitOrTenant: "Suite 101 - Acme Corporation",
-    category: "Fee",
-    type: "Income",
-    amount: 100
+    propertyId: 2,
+    unitNumber: "B",
+    size: 3200,
+    occupied: true,
+    tenantId: 4
   },
   {
     id: 6,
-    propertyId: 2,
-    date: "06/01/2023",
-    description: "Monthly Rent - Global Retail",
-    unitOrTenant: "Store 100 - Global Retail Inc.",
-    category: "Rent",
-    type: "Income",
-    amount: 3500
+    propertyId: 3,
+    unitNumber: "201",
+    size: 3000,
+    occupied: true,
+    tenantId: 5
   },
   {
     id: 7,
-    propertyId: 2,
-    date: "06/01/2023",
-    description: "Monthly Rent - Fashion Boutique",
-    unitOrTenant: "Store 101 - Fashion Boutique LLC",
-    category: "Rent",
-    type: "Income",
-    amount: 3200
-  },
-  {
-    id: 8,
-    propertyId: 2,
-    date: "06/12/2023",
-    description: "Cleaning Services",
-    unitOrTenant: "Common Areas",
-    category: "Maintenance",
-    type: "Expense",
-    amount: 450
-  }
-];
-
-export const maintenanceScheduleMockData = [
-  {
-    id: 1,
-    propertyId: 1,
-    title: "HVAC System Inspection",
-    description: "Regular inspection and maintenance of HVAC systems throughout the building",
-    recurrence: "Quarterly",
-    nextDueDate: "09/15/2023",
-    estimatedCost: 750,
-    vendor: "Quality HVAC Services"
-  },
-  {
-    id: 2,
-    propertyId: 1,
-    title: "Elevator Maintenance",
-    description: "Routine maintenance and safety checks for building elevators",
-    recurrence: "Monthly",
-    nextDueDate: "07/05/2023",
-    estimatedCost: 500,
-    vendor: "City Elevator Co."
-  },
-  {
-    id: 3,
-    propertyId: 1,
-    title: "Fire Safety Equipment Check",
-    description: "Inspection of fire extinguishers, smoke detectors, and sprinkler systems",
-    recurrence: "Yearly",
-    nextDueDate: "11/10/2023",
-    estimatedCost: 1200,
-    vendor: "FireSafe Inspections"
-  },
-  {
-    id: 4,
-    propertyId: 2,
-    title: "Parking Lot Maintenance",
-    description: "Cleaning, line repainting, and pothole repairs in the parking area",
-    recurrence: "Yearly",
-    nextDueDate: "08/20/2023",
-    estimatedCost: 2500,
-    vendor: "PaveCo Services"
-  },
-  {
-    id: 5,
-    propertyId: 2,
-    title: "Common Area Cleaning",
-    description: "Deep cleaning of common areas including floors, windows, and bathrooms",
-    recurrence: "Weekly",
-    nextDueDate: "06/28/2023",
-    estimatedCost: 350,
-    vendor: "CleanSweep Janitorial"
-  },
-  {
-    id: 6,
     propertyId: 3,
-    title: "Roof Inspection",
-    description: "Inspection of roof integrity, drainage systems, and repairs as needed",
-    recurrence: "Quarterly",
-    nextDueDate: "07/15/2023",
-    estimatedCost: 900,
-    vendor: "TopTier Roofing"
+    unitNumber: "202",
+    size: 2800,
+    occupied: false,
+    tenantId: null
   }
 ];
-
-export const documentsMockData = [
-  {
-    id: 1,
-    propertyId: 1,
-    name: "Lease Agreement - Acme Corp",
-    type: "PDF",
-    category: "Lease",
-    tenant: "Acme Corporation",
-    dateUploaded: "01/01/2023",
-    size: "1.2 MB"
-  },
-  {
-    id: 2,
-    propertyId: 1,
-    name: "Insurance Policy 2023",
-    type: "PDF",
-    category: "Insurance",
-    tenant: null,
-    dateUploaded: "02/15/2023",
-    size: "3.5 MB"
-  },
-  {
-    id: 3,
-    propertyId: 1,
-    name: "Property Tax Statement",
-    type: "PDF",
-    category: "Tax",
-    tenant: null,
-    dateUploaded: "03/10/2023",
-    size: "750 KB"
-  },
-  {
-    id: 4,
-    propertyId: 2,
-    name: "Lease Agreement - Global Retail",
-    type: "PDF",
-    category: "Lease",
-    tenant: "Global Retail Inc.",
-    dateUploaded: "03/15/2022",
-    size: "1.5 MB"
-  },
-  {
-    id: 5,
-    propertyId: 2,
-    name: "Renovation Permit",
-    type: "PDF",
-    category: "Permits",
-    tenant: null,
-    dateUploaded: "05/20/2023",
-    size: "2.1 MB"
-  }
-];
-
-export const expensesByCategoryMockData = [
-  {
-    propertyId: 1,
-    annualBudget: 25000,
-    categories: [
-      { name: "Maintenance", amount: 4500, budgetAmount: 5000 },
-      { name: "Utilities", amount: 3200, budgetAmount: 3000 },
-      { name: "Insurance", amount: 1800, budgetAmount: 2000 },
-      { name: "Property Tax", amount: 5500, budgetAmount: 5000 },
-      { name: "Management", amount: 2000, budgetAmount: 2500 }
-    ],
-    monthlyData: [
-      {
-        month: "January",
-        categories: [
-          { name: "Maintenance", amount: 320 },
-          { name: "Utilities", amount: 280 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 166 }
-        ]
-      },
-      {
-        month: "February",
-        categories: [
-          { name: "Maintenance", amount: 350 },
-          { name: "Utilities", amount: 265 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 166 }
-        ]
-      },
-      {
-        month: "March",
-        categories: [
-          { name: "Maintenance", amount: 410 },
-          { name: "Utilities", amount: 255 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 166 }
-        ]
-      },
-      {
-        month: "April",
-        categories: [
-          { name: "Maintenance", amount: 380 },
-          { name: "Utilities", amount: 240 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 166 }
-        ]
-      },
-      {
-        month: "May",
-        categories: [
-          { name: "Maintenance", amount: 420 },
-          { name: "Utilities", amount: 270 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 166 }
-        ]
-      },
-      {
-        month: "June",
-        categories: [
-          { name: "Maintenance", amount: 450 },
-          { name: "Utilities", amount: 310 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 166 }
-        ]
-      },
-      {
-        month: "July",
-        categories: [
-          { name: "Maintenance", amount: 470 },
-          { name: "Utilities", amount: 320 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 166 }
-        ]
-      },
-      {
-        month: "August",
-        categories: [
-          { name: "Maintenance", amount: 390 },
-          { name: "Utilities", amount: 290 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 168 }
-        ]
-      },
-      {
-        month: "September",
-        categories: [
-          { name: "Maintenance", amount: 410 },
-          { name: "Utilities", amount: 270 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 168 }
-        ]
-      },
-      {
-        month: "October",
-        categories: [
-          { name: "Maintenance", amount: 430 },
-          { name: "Utilities", amount: 260 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 168 }
-        ]
-      },
-      {
-        month: "November",
-        categories: [
-          { name: "Maintenance", amount: 240 },
-          { name: "Utilities", amount: 230 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 458 },
-          { name: "Management", amount: 170 }
-        ]
-      },
-      {
-        month: "December",
-        categories: [
-          { name: "Maintenance", amount: 230 },
-          { name: "Utilities", amount: 210 },
-          { name: "Insurance", amount: 150 },
-          { name: "Property Tax", amount: 462 },
-          { name: "Management", amount: 164 }
-        ]
-      }
-    ]
-  },
-  {
-    propertyId: 2,
-    annualBudget: 30000,
-    categories: [
-      { name: "Maintenance", amount: 3800, budgetAmount: 4000 },
-      { name: "Utilities", amount: 4100, budgetAmount: 4000 },
-      { name: "Insurance", amount: 2200, budgetAmount: 2500 },
-      { name: "Property Tax", amount: 6300, budgetAmount: 6000 },
-      { name: "Management", amount: 2500, budgetAmount: 3000 }
-    ],
-    monthlyData: [
-      {
-        month: "January",
-        categories: [
-          { name: "Maintenance", amount: 310 },
-          { name: "Utilities", amount: 350 },
-          { name: "Insurance", amount: 183 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 208 }
-        ]
-      },
-      {
-        month: "February",
-        categories: [
-          { name: "Maintenance", amount: 290 },
-          { name: "Utilities", amount: 340 },
-          { name: "Insurance", amount: 183 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 208 }
-        ]
-      },
-      {
-        month: "March",
-        categories: [
-          { name: "Maintenance", amount: 320 },
-          { name: "Utilities", amount: 330 },
-          { name: "Insurance", amount: 183 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 208 }
-        ]
-      },
-      {
-        month: "April",
-        categories: [
-          { name: "Maintenance", amount: 340 },
-          { name: "Utilities", amount: 320 },
-          { name: "Insurance", amount: 183 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 208 }
-        ]
-      },
-      {
-        month: "May",
-        categories: [
-          { name: "Maintenance", amount: 350 },
-          { name: "Utilities", amount: 335 },
-          { name: "Insurance", amount: 183 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 208 }
-        ]
-      },
-      {
-        month: "June",
-        categories: [
-          { name: "Maintenance", amount: 330 },
-          { name: "Utilities", amount: 355 },
-          { name: "Insurance", amount: 183 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 208 }
-        ]
-      },
-      {
-        month: "July",
-        categories: [
-          { name: "Maintenance", amount: 320 },
-          { name: "Utilities", amount: 370 },
-          { name: "Insurance", amount: 184 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 208 }
-        ]
-      },
-      {
-        month: "August",
-        categories: [
-          { name: "Maintenance", amount: 330 },
-          { name: "Utilities", amount: 380 },
-          { name: "Insurance", amount: 184 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 210 }
-        ]
-      },
-      {
-        month: "September",
-        categories: [
-          { name: "Maintenance", amount: 300 },
-          { name: "Utilities", amount: 340 },
-          { name: "Insurance", amount: 184 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 210 }
-        ]
-      },
-      {
-        month: "October",
-        categories: [
-          { name: "Maintenance", amount: 290 },
-          { name: "Utilities", amount: 330 },
-          { name: "Insurance", amount: 184 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 210 }
-        ]
-      },
-      {
-        month: "November",
-        categories: [
-          { name: "Maintenance", amount: 310 },
-          { name: "Utilities", amount: 320 },
-          { name: "Insurance", amount: 184 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 210 }
-        ]
-      },
-      {
-        month: "December",
-        categories: [
-          { name: "Maintenance", amount: 310 },
-          { name: "Utilities", amount: 330 },
-          { name: "Insurance", amount: 182 },
-          { name: "Property Tax", amount: 525 },
-          { name: "Management", amount: 212 }
-        ]
-      }
-    ]
-  },
-  {
-    propertyId: 3,
-    annualBudget: 35000,
-    categories: [
-      { name: "Maintenance", amount: 5200, budgetAmount: 6000 },
-      { name: "Utilities", amount: 2900, budgetAmount: 3000 },
-      { name: "Insurance", amount: 3100, budgetAmount: 3000 },
-      { name: "Property Tax", amount: 7500, budgetAmount: 7000 },
-      { name: "Management", amount: 3000, budgetAmount: 3500 }
-    ],
-    monthlyData: [
-      {
-        month: "January",
-        categories: [
-          { name: "Maintenance", amount: 450 },
-          { name: "Utilities", amount: 240 },
-          { name: "Insurance", amount: 258 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "February",
-        categories: [
-          { name: "Maintenance", amount: 430 },
-          { name: "Utilities", amount: 230 },
-          { name: "Insurance", amount: 258 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "March",
-        categories: [
-          { name: "Maintenance", amount: 440 },
-          { name: "Utilities", amount: 235 },
-          { name: "Insurance", amount: 258 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "April",
-        categories: [
-          { name: "Maintenance", amount: 460 },
-          { name: "Utilities", amount: 240 },
-          { name: "Insurance", amount: 258 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "May",
-        categories: [
-          { name: "Maintenance", amount: 470 },
-          { name: "Utilities", amount: 250 },
-          { name: "Insurance", amount: 258 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "June",
-        categories: [
-          { name: "Maintenance", amount: 480 },
-          { name: "Utilities", amount: 260 },
-          { name: "Insurance", amount: 258 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "July",
-        categories: [
-          { name: "Maintenance", amount: 490 },
-          { name: "Utilities", amount: 270 },
-          { name: "Insurance", amount: 258 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "August",
-        categories: [
-          { name: "Maintenance", amount: 410 },
-          { name: "Utilities", amount: 250 },
-          { name: "Insurance", amount: 258 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "September",
-        categories: [
-          { name: "Maintenance", amount: 420 },
-          { name: "Utilities", amount: 240 },
-          { name: "Insurance", amount: 258 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "October",
-        categories: [
-          { name: "Maintenance", amount: 400 },
-          { name: "Utilities", amount: 230 },
-          { name: "Insurance", amount: 262 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "November",
-        categories: [
-          { name: "Maintenance", amount: 380 },
-          { name: "Utilities", amount: 225 },
-          { name: "Insurance", amount: 262 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      },
-      {
-        month: "December",
-        categories: [
-          { name: "Maintenance", amount: 370 },
-          { name: "Utilities", amount: 230 },
-          { name: "Insurance", amount: 264 },
-          { name: "Property Tax", amount: 625 },
-          { name: "Management", amount: 250 }
-        ]
-      }
-    ]
-  }
-];
-
-export const expensesMockData = [
-  {
-    id: 1,
-    propertyId: 1,
-    date: "Jan 15, 2023",
-    description: "HVAC Repair",
-    category: "Maintenance",
-    vendor: "Quality HVAC Services",
-    amount: 850
-  },
-  {
-    id: 2,
-    propertyId: 1,
-    date: "Feb 10, 2023",
-    description: "Property Insurance Premium",
-    category: "Insurance",
-    vendor: "Reliable Insurance Co.",
-    amount: 1200
-  },
-  {
-    id: 3,
-    propertyId: 1,
-    date: "Mar 05, 2023",
-    description: "Landscaping Service",
-    category: "Maintenance",
-    vendor: "Green Thumb Landscaping",
-    amount: 450
-  },
-  {
-    id: 4,
-    propertyId: 2,
-    date: "Jan 10, 2023",
-    description: "Elevator Maintenance",
-    category: "Maintenance",
-    vendor: "City Elevator Co.",
-    amount: 750
-  },
-  {
-    id: 5,
-    propertyId: 2,
-    date: "Feb 28, 2023",
-    description: "Property Tax Payment",
-    category: "Property Tax",
-    vendor: "City Government",
-    amount: 3200
-  }
-];
-
-export const expenseBreakdownData = [
-  {
-    propertyId: 1,
-    category: "Maintenance",
-    amount: 4500
-  },
-  {
-    propertyId: 1,
-    category: "Utilities",
-    amount: 3200
-  },
-  {
-    propertyId: 1,
-    category: "Insurance",
-    amount: 1800
-  },
-  {
-    propertyId: 1,
-    category: "Property Tax",
-    amount: 5500
-  },
-  {
-    propertyId: 1,
-    category: "Management",
-    amount: 2000
-  },
-  {
-    propertyId: 2,
-    category: "Maintenance",
-    amount: 3800
-  },
-  {
-    propertyId: 2,
-    category: "Utilities",
-    amount: 4100
-  },
-  {
-    propertyId: 2,
-    category: "Insurance",
-    amount: 2200
-  },
-  {
-    propertyId: 2,
-    category: "Property Tax",
-    amount: 6300
-  },
-  {
-    propertyId: 2,
-    category: "Management",
-    amount: 2500
-  }
-];
-
-export const profitLossData = [
-  {
-    propertyId: 1,
-    month: "Jan",
-    income: 5400,
-    expenses: 2300
-  },
-  {
-    propertyId: 1,
-    month: "Feb",
-    income: 5400,
-    expenses: 2500
-  },
-  {
-    propertyId: 1,
-    month: "Mar",
-    income: 5400,
-    expenses: 2100
-  },
-  {
-    propertyId: 1,
-    month: "Apr",
-    income: 5400,
-    expenses: 2400
-  },
-  {
-    propertyId: 1,
-    month: "May",
-    income: 5400,
-    expenses: 2200
-  },
-  {
-    propertyId: 1,
-    month: "Jun",
-    income: 5400,
-    expenses: 2600
-  },
-  {
-    propertyId: 2,
-    month: "Jan",
-    income: 6700,
-    expenses: 3100
-  },
-  {
-    propertyId: 2,
-    month: "Feb",
-    income: 6700,
-    expenses: 3300
-  },
-  {
-    propertyId: 2,
-    month: "Mar",
-    income: 6700,
-    expenses: 2900
-  },
-  {
-    propertyId: 2,
-    month: "Apr",
-    income: 6700,
-    expenses: 3200
-  },
-  {
-    propertyId: 2,
-    month: "May",
-    income: 6700,
-    expenses: 3000
-  },
-  {
-    propertyId: 2,
-    month: "Jun",
-    income: 6700,
-    expenses: 3400
-  }
-];
-
-import { properties } from './mockData';
-export { properties };
