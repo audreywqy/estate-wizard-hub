@@ -25,7 +25,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell, PieChart, Pie } from 'recharts';
 import { AddExpenseForm } from './AddExpenseForm';
 import { expensesMockData, expenseBreakdownData, profitLossData } from '@/data/mockUnitsData';
 
@@ -194,20 +194,28 @@ const PropertyExpenses: React.FC<PropertyExpensesProps> = ({ propertyId }) => {
             <TabsContent value="breakdown">
               <div className="bg-white rounded-lg shadow p-4">
                 <h4 className="font-medium mb-4">Expense Distribution by Category</h4>
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={filteredBreakdownData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip formatter={(value) => `$${value}`} />
-                    <Legend />
-                    <Bar dataKey="value" name="Amount">
-                      {filteredBreakdownData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
+                <div className="flex flex-col space-y-6">
+                  <ResponsiveContainer width="100%" height={300}>
+                    <PieChart>
+                      <Pie
+                        data={filteredBreakdownData}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        outerRadius={100}
+                        fill="#8884d8"
+                        dataKey="value"
+                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                      >
+                        {filteredBreakdownData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                        ))}
+                      </Pie>
+                      <Tooltip formatter={(value) => `$${value}`} />
+                      <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '20px' }} />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
               </div>
             </TabsContent>
             <TabsContent value="profitloss">
