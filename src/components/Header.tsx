@@ -17,7 +17,7 @@ const Header: React.FC = () => {
       </div>
       
       {/* Title visible on mobile */}
-      <div className="md:hidden font-bold text-lg">PropMaster</div>
+      <div className="md:hidden font-bold text-lg">Ascend PropMaster</div>
       
       {/* Actions */}
       <div className="flex items-center space-x-2">
