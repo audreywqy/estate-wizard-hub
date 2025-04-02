@@ -121,9 +121,9 @@ const Index = () => {
               <CardTitle>Expense Breakdown</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-col justify-center">
-                <ResponsiveContainer width="100%" height={220}>
-                  <PieChart>
+              <div className="flex flex-col justify-center" style={{ position: 'relative' }}>
+                <ResponsiveContainer width="100%" height={250}>
+                  <PieChart margin={{ top: 0, right: 0, bottom: 30, left: 0 }}>
                     <Pie
                       data={expenseData}
                       cx="50%"
@@ -144,12 +144,12 @@ const Index = () => {
                       verticalAlign="bottom"
                       align="center"
                       wrapperStyle={{ 
-                        paddingTop: '20px',
-                        width: '100%',
+                        paddingTop: '5px',
+                        marginBottom: '10px',
+                        position: 'absolute',
                         bottom: 0,
                         left: 0,
-                        right: 0,
-                        margin: '0 auto'
+                        width: '100%'
                       }}
                     />
                   </PieChart>

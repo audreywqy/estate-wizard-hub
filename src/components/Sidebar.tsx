@@ -43,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose }) => {
     >
       {/* Sidebar header */}
       <div className="h-16 flex items-center justify-between px-4 border-b border-darkblue">
-        <h1 className="text-xl font-bold">PropMaster</h1>
+        <h1 className="text-xl font-bold">Ascend PropMaster</h1>
         {isMobile && (
           <Button variant="ghost" size="icon" onClick={onClose}>
             <X className="h-5 w-5" />
