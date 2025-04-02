@@ -122,14 +122,14 @@ const Index = () => {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col justify-center">
-                <ResponsiveContainer width="100%" height={250}>
+                <ResponsiveContainer width="100%" height={220}>
                   <PieChart>
                     <Pie
                       data={expenseData}
                       cx="50%"
                       cy="45%"
                       labelLine={false}
-                      outerRadius={90}
+                      outerRadius={80}
                       fill="#8884d8"
                       dataKey="value"
                       label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
@@ -139,21 +139,21 @@ const Index = () => {
                       ))}
                     </Pie>
                     <Tooltip formatter={(value) => `$${value.toLocaleString()}`} />
+                    <Legend 
+                      layout="horizontal"
+                      verticalAlign="bottom"
+                      align="center"
+                      wrapperStyle={{ 
+                        paddingTop: '20px',
+                        width: '100%',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        margin: '0 auto'
+                      }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
-                <div className="mt-4">
-                  <Legend 
-                    payload={expenseData.map((item, index) => ({
-                      value: item.name,
-                      color: EXPENSE_COLORS[index % EXPENSE_COLORS.length],
-                      type: 'square'
-                    }))}
-                    layout="horizontal" 
-                    verticalAlign="bottom" 
-                    align="center"
-                    wrapperStyle={{ paddingTop: '15px' }}
-                  />
-                </div>
               </div>
             </CardContent>
           </Card>
