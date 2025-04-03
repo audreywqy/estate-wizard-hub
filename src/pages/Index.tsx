@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/Layout';
 import StatCard from '@/components/dashboard/StatCard';
@@ -120,13 +121,13 @@ const Index = () => {
               <CardTitle>Expense Breakdown</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-col justify-center" style={{ position: 'relative', height: '320px' }}>
-                <ResponsiveContainer width="100%" height={280}>
-                  <PieChart margin={{ top: 20, right: 0, bottom: 30, left: 0 }}>
+              <div className="flex flex-col justify-center" style={{ position: 'relative', height: '340px' }}>
+                <ResponsiveContainer width="100%" height={250}>
+                  <PieChart margin={{ top: 0, right: 0, bottom: 30, left: 0 }}>
                     <Pie
                       data={expenseData}
                       cx="50%"
-                      cy="45%"
+                      cy="40%"
                       labelLine={false}
                       outerRadius={80}
                       fill="#8884d8"
@@ -143,7 +144,6 @@ const Index = () => {
                       verticalAlign="bottom"
                       align="center"
                       wrapperStyle={{ 
-                        marginBottom: '0px',
                         position: 'absolute',
                         bottom: 0,
                         left: 0,
