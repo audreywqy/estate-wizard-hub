@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Layout from '@/components/Layout';
 import StatCard from '@/components/dashboard/StatCard';
@@ -114,13 +115,13 @@ const Index = () => {
             <CardHeader className="pb-2">
               <CardTitle>Expense Breakdown</CardTitle>
             </CardHeader>
-            <CardContent className="flex items-center justify-center" style={{ height: "300px" }}>
-              <ResponsiveContainer width="100%" height="90%">
-                <PieChart>
+            <CardContent className="h-[300px] flex items-center justify-center">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart margin={{ top: 10, right: 0, bottom: 20, left: 0 }}>
                   <Pie
                     data={expenseData}
                     cx="50%"
-                    cy="40%"
+                    cy="50%"
                     labelLine={false}
                     outerRadius={80}
                     fill="#8884d8"
@@ -136,6 +137,7 @@ const Index = () => {
                     layout="horizontal"
                     verticalAlign="bottom"
                     align="center"
+                    wrapperStyle={{ paddingTop: 10 }}
                   />
                 </PieChart>
               </ResponsiveContainer>
