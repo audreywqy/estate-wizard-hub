@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/Layout';
 import StatCard from '@/components/dashboard/StatCard';
@@ -56,7 +55,6 @@ const Index = () => {
   return (
     <Layout>
       <div className="space-y-6">
-        {/* Page header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between space-y-2 md:space-y-0">
           <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
           <div className="flex items-center space-x-2">
@@ -65,7 +63,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard 
             title="Total Properties" 
@@ -95,9 +92,7 @@ const Index = () => {
           />
         </div>
 
-        {/* Charts - Occupancy and Expense */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Occupancy Chart - Now half width */}
           <Card>
             <CardHeader>
               <CardTitle>Occupancy Rate</CardTitle>
@@ -115,49 +110,39 @@ const Index = () => {
             </CardContent>
           </Card>
           
-          {/* Expense Chart - New addition */}
           <Card>
             <CardHeader className="pb-2">
               <CardTitle>Expense Breakdown</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="flex flex-col justify-center" style={{ position: 'relative', height: '320px' }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart margin={{ top: 20, right: 0, bottom: 0, left: 0 }}>
-                    <Pie
-                      data={expenseData}
-                      cx="50%"
-                      cy="45%"
-                      labelLine={false}
-                      outerRadius={80}
-                      fill="#8884d8"
-                      dataKey="value"
-                      label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                    >
-                      {expenseData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={EXPENSE_COLORS[index % EXPENSE_COLORS.length]} />
-                      ))}
-                    </Pie>
-                    <Tooltip formatter={(value) => `$${value.toLocaleString()}`} />
-                    <Legend 
-                      layout="horizontal"
-                      verticalAlign="bottom"
-                      align="center"
-                      wrapperStyle={{ 
-                        position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        width: '100%'
-                      }}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
+            <CardContent className="flex items-center justify-center" style={{ height: "300px" }}>
+              <ResponsiveContainer width="100%" height="90%">
+                <PieChart>
+                  <Pie
+                    data={expenseData}
+                    cx="50%"
+                    cy="40%"
+                    labelLine={false}
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  >
+                    {expenseData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={EXPENSE_COLORS[index % EXPENSE_COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(value) => `$${value.toLocaleString()}`} />
+                  <Legend 
+                    layout="horizontal"
+                    verticalAlign="bottom"
+                    align="center"
+                  />
+                </PieChart>
+              </ResponsiveContainer>
             </CardContent>
           </Card>
         </div>
 
-        {/* Properties section */}
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold">Featured Properties</h2>
@@ -170,7 +155,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Maintenance Requests */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
