@@ -122,12 +122,12 @@ const Index = () => {
             </CardHeader>
             <CardContent>
               <div className="flex flex-col justify-center" style={{ position: 'relative', height: '340px' }}>
-                <ResponsiveContainer width="100%" height={250}>
-                  <PieChart margin={{ top: 0, right: 0, bottom: 30, left: 0 }}>
+                <ResponsiveContainer width="100%" height={280}>
+                  <PieChart margin={{ top: 10, right: 0, bottom: 10, left: 0 }}>
                     <Pie
                       data={expenseData}
                       cx="50%"
-                      cy="40%"
+                      cy="50%"
                       labelLine={false}
                       outerRadius={80}
                       fill="#8884d8"
