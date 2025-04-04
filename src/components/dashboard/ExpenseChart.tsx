@@ -28,7 +28,7 @@ const ExpenseChart = () => {
       </CardHeader>
       <CardContent className="h-[300px] flex items-center justify-center">
         <ResponsiveContainer width="100%" height="100%">
-          <PieChart margin={{ top: 10, right: 0, bottom: 10, left: 0 }}>
+          <PieChart margin={{ top: 10, right: 0, bottom: 20, left: 0 }}>
             <Pie
               data={expenseData}
               cx="50%"
@@ -48,7 +48,7 @@ const ExpenseChart = () => {
               layout="horizontal"
               verticalAlign="bottom"
               align="center"
-              wrapperStyle={{ paddingTop: 15, marginBottom: 0 }}
+              wrapperStyle={{ paddingTop: 30, marginBottom: -20 }}
             />
           </PieChart>
         </ResponsiveContainer>
