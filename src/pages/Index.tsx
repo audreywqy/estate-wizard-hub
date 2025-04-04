@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Layout from '@/components/Layout';
 import StatCard from '@/components/dashboard/StatCard';
@@ -137,7 +136,7 @@ const Index = () => {
                     layout="horizontal"
                     verticalAlign="bottom"
                     align="center"
-                    wrapperStyle={{ paddingTop: 10 }}
+                    wrapperStyle={{ paddingTop: 30, marginBottom: -20 }}
                   />
                 </PieChart>
               </ResponsiveContainer>
